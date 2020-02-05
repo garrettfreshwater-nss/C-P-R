@@ -1,0 +1,18 @@
+.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: left;
+    height: 40px;
+    width: 100%;
+    margin: -10px;
+    background: salmon;
+    position: sticky;
+}
+
+.navbar__item {
+    flex-basis: 10%;
+    list-style-type: none;
+    text-align: center;
+    margin:auto;
+
+}
