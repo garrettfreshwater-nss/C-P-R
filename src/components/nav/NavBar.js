@@ -6,26 +6,26 @@ export default (props) => {
     return (
         <ul className="navbar">
             <li className="navbar__item active">
-                <Link className="navbar__link" to="/">NSS Kennels</Link>
+                <Link className="navbar__link" to="/">Dashboard</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/animals">Animals</Link>
+                <Link className="navbar__link" to="/">Add Code</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/customers">Customers</Link>
+                <Link className="navbar__link" to="/">My Code</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/employees">Employees</Link>
+                <Link className="navbar__link" to="/">Log Out</Link>
             </li>
 
             {
-                localStorage.getItem("kennel_customer")
+                localStorage.getItem("cpr__user")
                     ? <li className="navbar__item">
                         <Link className="navbar__link"
                             to=""
                             onClick={e => {
                                 e.preventDefault()
-                                localStorage.removeItem("kennel_customer")
+                                localStorage.removeItem("cpr__user")
                                 props.history.push("/")
                             }}
                         >Logout</Link>

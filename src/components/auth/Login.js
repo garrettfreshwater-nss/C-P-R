@@ -6,11 +6,9 @@ import "./Login.css"
 const Login = props => {
     const email = useRef()
     const password = useRef()
-    const customerName = useRef()
-    const address = useRef()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(_ => _.json())
             .then(user => {
                 if (user.length) {
@@ -26,12 +24,12 @@ const Login = props => {
         existingUserCheck()
             .then(exists => {
                 if (exists && exists.password === password.current.value) {
-                    localStorage.setItem("kennel_customer", exists.id)
+                    localStorage.setItem("cpr__user", exists.id)
                     props.history.push("/")
                 } else if (exists && exists.password !== password.current.value) {
                     window.alert("Password does not match")
                 } else if (!exists) {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -39,13 +37,12 @@ const Login = props => {
                         body: JSON.stringify({
                             email: email.current.value,
                             password: password.current.value,
-                            name: customerName.current.value,
-                            address: address.current.value
+                            // name: `${firstName.current.value} ${lastName.current.value}`
                         })
                     })
                         .then(_ => _.json())
                         .then(response => {
-                            localStorage.setItem("kennel_customer", response.id)
+                            localStorage.setItem("cpr__user", response.id)
                             props.history.push("/")
                         })
                 }
@@ -54,10 +51,10 @@ const Login = props => {
 
     return (
         <main className="container--login">
-            <section>
+            <section className="login__section">
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>Nashville Kennels</h1>
-                    <h2>Please sign in</h2>
+                    <h1>CPR</h1>
+                    <h2>Welcome Back</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"

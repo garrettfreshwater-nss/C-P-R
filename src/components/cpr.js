@@ -4,13 +4,13 @@ import ApplicationViews from "./ApplicationViews"
 import NavBar from "./nav/NavBar"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
-import "./Kennel.css"
+import "./cpr.css"
 
 export default () => (
     <>
     
         <Route render={() => {
-            if (localStorage.getItem("kennel_customer")) {
+            if (localStorage.getItem("cpr__user")) {
                 return (
                     
                     <>

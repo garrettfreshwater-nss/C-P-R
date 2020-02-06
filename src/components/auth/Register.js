@@ -4,12 +4,13 @@ import "./Login.css"
 const Register = props => {
     const firstName = useRef()
     const lastName = useRef()
+    // const userImage = useRef()
     const email = useRef()
     const password = useRef()
     const verifyPassword = useRef()
 
     const existingUserCheck = () => {
-        return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+        return fetch(`http://localhost:8088/users?email=${email.current.value}`)
             .then(_ => _.json())
             .then(user => {
                 if (user.length) {
@@ -25,7 +26,7 @@ const Register = props => {
         if (password.current.value === verifyPassword.current.value) {
             existingUserCheck()
                 .then(() => {
-                    fetch("http://localhost:8088/customers", {
+                    fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -39,7 +40,7 @@ const Register = props => {
                         .then(_ => _.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
-                                localStorage.setItem("kennel_customer", createdUser.id)
+                                localStorage.setItem("cpr__user", createdUser.id)
                                 props.history.push("/")
                             }
                         })
@@ -50,7 +51,7 @@ const Register = props => {
     }
 
     return (
-        <main style={{ textAlign: "center" }}>
+        <main className="register__section" style={{ textAlign: "center" }}>
             <form className="form--login" onSubmit={handleRegister}>
                 <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
                 <fieldset>

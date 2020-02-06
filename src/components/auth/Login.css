@@ -1,30 +1,30 @@
 .h1, h1 {
     font-size: 2.5rem;
-    color: slateblue;
-background: transparent;
-text-shadow: -1px -1px 1px rgb(255, 255, 255), 1px 1px 1px rgba(3, 0, 0, 0.897);
+    /* color: slateblue; */
+    background: transparent;
+    text-shadow: -1px -1px 1px rgb(255, 255, 255), 1px 1px 1px rgba(3, 0, 0, 0.897);
 }
 
 fieldset {
     min-width: 0;
-    padding: 1rem 0;
+    padding: .07rem 0;
     margin: 0;
     border: 0;
 }
 
 .form--login {
     display: inline-block;
-    margin: 0 auto;
+    margin: auto;
     text-align: left;
 }
 
 .form--login > fieldset > input[type="email"],
 .form--login > fieldset > input[type="password"] {
-    width: 25em;
+    width: 20em;
 }
 
 .label--login {
-    width: 8rem;
+    width: 3rem;
     display: inline-block;
 }
 
@@ -39,8 +39,8 @@ fieldset {
     color: #495057;
     background-color: #fff;
     background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
+    border: .5px solid #f544ec;
+    border-radius: .50rem;
     -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
@@ -49,7 +49,7 @@ fieldset {
     text-align: center;
 }
 
-.form--login {
+/* .form--login {
     background-position-x: 20rem;
     background-image: url(dogelogo.png);
     z-index: 1;
@@ -58,5 +58,27 @@ fieldset {
     background-color: rgba(255, 255, 255, 0);
     background-blend-mode: overlay;
     background-repeat: no-repeat;
+} */
+
+.login__section {
+
+   
+    width: 600px;
+    height: 450px;
+    margin: 0% auto;
+    background: #EEECEC;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+
+}
+
+.register__section {
+
+   
+    width: 600px;
+    height: 550px;
+    margin: auto;
+    background: #EEECEC;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+
 }
 
