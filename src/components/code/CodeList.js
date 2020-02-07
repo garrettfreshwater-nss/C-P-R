@@ -39,7 +39,6 @@ export default (props) => {
         <>
             <h1>Code</h1>
             <div className="code__list">
-
                 {
                     codeArray.map(c => {
                         return <Code key={c.id} code={c} {...props} />

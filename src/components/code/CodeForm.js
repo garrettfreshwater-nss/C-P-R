@@ -1,10 +1,13 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider"
+import { CodeTypeContext } from "./codeType/CodeTypeProvider"
 import "./Code.css"
 
 export default props => {
     const { addCode, updateCode, code } = useContext(CodeContext)
-    const [ codeOjbect, setCode ] = useState({})
+    const { codeType } = useContext(CodeTypeContext)
+    const [ codeObject, setCode ] = useState({})
+    const codeTypes = useRef(0)
 
     const editMode = props.match.params.hasOwnProperty("codeId")
 
@@ -13,7 +16,7 @@ export default props => {
             When changing a state object or array, always create a new one
             and change state instead of modifying current one
         */
-        const newCode = Object.assign({}, code)
+        const newCode = Object.assign({}, codeObject)
         newCode[evt.target.name] = evt.target.value
         console.log(newCode)
         setCode(newCode)
@@ -25,7 +28,6 @@ export default props => {
             const selectedCode = code.find(c => c.id === codeId) || {}
             setCode(selectedCode)
             console.log(selectedCode)
-        
         }
     }
 
@@ -36,19 +38,21 @@ export default props => {
     const constructNewCode = () => {
         if (editMode) {
             updateCode({
-                id: codeOjbect.id,
-                name: codeOjbect.name,
-                code: codeOjbect.code,
-                text: codeOjbect.text,
-                userId: parseInt(localStorage.getItem("nutshell_user"), 10)
+                id: codeObject.id,
+                name: codeObject.name,
+                codeTypeId: parseInt(codeObject.current.value),
+                codeSnippet: codeObject.codeSnippet,
+                text: codeObject.text,
+                userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
                 .then(() => props.history.push("/"))
         } else {
             addCode({
-                name: codeOjbect.name,
-                code: codeOjbect.code,
-                text: codeOjbect.text,
-                userId: parseInt(localStorage.getItem("nutshell_user"), 10)
+                name: codeObject.name,
+                codeTypeId: parseInt(codeObject.current.value),
+                codeSnippet: codeObject.codeSnippet,
+                text: codeObject.text,
+                userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
             .then(() => props.history.push("/"))
         }
@@ -67,7 +71,7 @@ export default props => {
                     type="text"
                     id="name"
                     name="name"
-                    defaultValue={code.name}
+                    defaultValue={codeObject.name}
                     required
                     autoFocus
                     className="form-control"
@@ -78,14 +82,33 @@ export default props => {
             </div>
                     </fieldset>
                     <fieldset>
+                <div className="form-group">
+                    <label htmlFor="codeType">Assign to codeType: </label>
+                    <select
+                        defaultValue=""
+                        name="codeType"
+                        ref={codeTypes}
+                        id="codeType"
+                        className="form-control"
+                    >
+                        <option value="0">Select Language</option>
+                        {codeType.map(c => (
+                            <option key={c.id} value={c.id}>
+                                {c.type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+                    <fieldset>
 
             <div className="form-group">
                 <label htmlFor="code">Code</label>
                 <input
                     type="text"
                     id="code"
-                    name="code"
-                    defaultValue={code.code}
+                    name="codeSnippet"
+                    defaultValue={codeObject.codeSnippet}
                     required
                     className="form-control"
                     placeholder="Paste Code Here"
@@ -97,12 +120,12 @@ export default props => {
                     <fieldset>
 
             <div className="form-group">
-                <label htmlFor="note">Note</label>
+                <label htmlFor="text">Note</label>
                 <input
                     type="text"
-                    id="note"
-                    name="note"
-                    defaultValue={code.note}
+                    id="text"
+                    name="text"
+                    defaultValue={codeObject.text}
                     required
                     className="form-control"
                     placeholder="Your notes"
