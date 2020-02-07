@@ -18,10 +18,14 @@ return (
                 </Route>
                 
                     <Route exact path="/" render={props => <CodeList {...props} />} />
+{/* 
+                    <Route
+                        exact path="/dashboard" //this is a path created here, renders the form
+                        render={props => <CodeForm {...props} />}
+                    /> */}
 
                     <Route
-                        exact
-                        path="/code"
+                        exact path="/add__code" //this is a path created here, renders the form
                         render={props => <CodeForm {...props} />}
                     />
                     <Route

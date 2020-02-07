@@ -10,10 +10,10 @@ export default (props) => {
                 <Link className="navbar__link" to="/">Dashboard</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/">Add Code</Link>
+                <Link className="navbar__link" to="/add__code">Add Code</Link>
             </li>
             <li className="navbar__item">
-                <Link className="navbar__link" to="/">My Code</Link>
+                <Link className="navbar__link" to="/my__code">My Code</Link>
             </li>
             {
                 localStorage.getItem("cpr__user")

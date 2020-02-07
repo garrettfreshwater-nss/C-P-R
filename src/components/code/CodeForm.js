@@ -4,7 +4,7 @@ import "./Code.css"
 
 export default props => {
     const { addCode, updateCode, code } = useContext(CodeContext)
-    const [ code, setCode ] = useState({})
+    const [ codeOjbect, setCode ] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("codeId")
 
@@ -36,18 +36,18 @@ export default props => {
     const constructNewCode = () => {
         if (editMode) {
             updateCode({
-                id: code.id,
-                name: code.name,
-                code: code.code,
-                text: code.text,
+                id: codeOjbect.id,
+                name: codeOjbect.name,
+                code: codeOjbect.code,
+                text: codeOjbect.text,
                 userId: parseInt(localStorage.getItem("nutshell_user"), 10)
             })
                 .then(() => props.history.push("/"))
         } else {
             addCode({
-                name: code.name,
-                code: code.code,
-                text: code.text,
+                name: codeOjbect.name,
+                code: codeOjbect.code,
+                text: codeOjbect.text,
                 userId: parseInt(localStorage.getItem("nutshell_user"), 10)
             })
             .then(() => props.history.push("/"))
@@ -97,7 +97,7 @@ export default props => {
                     <fieldset>
 
             <div className="form-group">
-                <label htmlFor="note">note</label>
+                <label htmlFor="note">Note</label>
                 <input
                     type="text"
                     id="note"

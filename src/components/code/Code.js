@@ -3,9 +3,6 @@ import "./Code.css"
 import { CodeContext } from "./CodeProvider";
 
 
-
-
-
 export default ({ code, history }) => {
     
     const {deleteCode} = useContext(CodeContext)

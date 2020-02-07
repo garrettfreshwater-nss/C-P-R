@@ -42,7 +42,7 @@ export default (props) => {
 
                 {
                     codeArray.map(c => {
-                        return <Code key={c.id} article={c} {...props} />
+                        return <Code key={c.id} code={c} {...props} />
                     })
                 }
             </div>
