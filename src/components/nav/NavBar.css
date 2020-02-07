@@ -1,12 +1,17 @@
+
+
 .navbar {
     display: flex;
     flex-wrap: nowrap;
     justify-content: left;
-    height: 40px;
     width: 100%;
     margin: -10px;
-    background: salmon;
-    position: sticky;
+    /* position: sticky; */
+    position: absolute;
+    width: 1280px;
+    height: 77px;
+    background: #D3D3D3;
+    box-shadow: 0px 6px 6px rgba(0, 0, 0, 0.35);
 }
 
 .navbar__item {
@@ -14,5 +19,10 @@
     list-style-type: none;
     text-align: center;
     margin:auto;
+}
 
+a {
+    text-decoration: none !important;
+    font-family: 'Amiko', sans-serif;
+    color: black !important;
 }
