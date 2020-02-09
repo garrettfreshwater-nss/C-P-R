@@ -12,19 +12,20 @@ export default ({ code, history }) => {
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
     
-    <div> 
-          <button className="active__code" onClick={() => {
+    <div className="codeCard_buttons"> 
+        <button className="active__code" onClick={
+              () => {
                history.push(`/code/edit/${code.id}`)
-            }}>Edit</button>
+               }}>Edit
+        </button>
     
-        <button onClick={
+        <button className="deleteButton" onClick={
             () => {
                 deleteCode(code)
                 .then(() => {
                     history.push("/")            
                 })
-            }}>
-        Delete code
+            }}>Delete
         </button>
     
     </div>
@@ -39,9 +40,10 @@ export default ({ code, history }) => {
                 <h3 className="code__name">{ code.name }</h3>
                 <div className="code__codeType">{ code.codeType.type }</div>
                 <div className="code__codeSnippet">{ code.codeSnippet }</div>
-                <div className="code__text">Note:<br/>{ code.text }</div>
+                <div className="code__text">{ code.text }</div>
                 {activeUserCode(code, history)}
             </section>
+
     )
 
 }
