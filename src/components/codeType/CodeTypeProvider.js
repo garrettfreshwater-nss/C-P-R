@@ -15,13 +15,13 @@ export const CodeTypeProvider = (props) => {
     //CodeType is the name of the data in our application now.
 
     const getCodeTypes = () => {
-        return fetch("http://localhost:8088/CodeTypes")
+        return fetch("http://localhost:8088/codeTypes?_expand=type")
             .then(res => res.json())
             .then(setCodeTypes)
     }
 
     const addCodeType = CodeType => {
-        return fetch("http://localhost:8088/CodeTypes", {
+        return fetch("http://localhost:8088/codeTypes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

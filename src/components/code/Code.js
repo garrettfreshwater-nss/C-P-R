@@ -37,9 +37,9 @@ export default ({ code, history }) => {
     return(
             <section className="code">
                 <h3 className="code__name">{ code.name }</h3>
-                <div className="code__codeType">{ code.codeType }</div>
+                <div className="code__codeType">{ code.codeType.type }</div>
                 <div className="code__codeSnippet">{ code.codeSnippet }</div>
-                <div className="code__text">{ code.text }</div>
+                <div className="code__text">Note:<br/>{ code.text }</div>
                 {activeUserCode(code, history)}
             </section>
     )

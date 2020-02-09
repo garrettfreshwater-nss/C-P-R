@@ -1,13 +1,12 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider"
-import { CodeTypeContext } from "./codeType/CodeTypeProvider"
 import "./Code.css"
+import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 
 export default props => {
     const { addCode, updateCode, code } = useContext(CodeContext)
-    const { codeType } = useContext(CodeTypeContext)
+    const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({})
-    const codeTypes = useRef(0)
 
     const editMode = props.match.params.hasOwnProperty("codeId")
 
@@ -40,7 +39,7 @@ export default props => {
             updateCode({
                 id: codeObject.id,
                 name: codeObject.name,
-                codeTypeId: parseInt(codeObject.current.value),
+                codeTypeId: parseInt(codeObject.codeTypeId),
                 codeSnippet: codeObject.codeSnippet,
                 text: codeObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
@@ -49,7 +48,7 @@ export default props => {
         } else {
             addCode({
                 name: codeObject.name,
-                codeTypeId: parseInt(codeObject.current.value),
+                codeTypeId: parseInt(codeObject.codeTypeId),
                 codeSnippet: codeObject.codeSnippet,
                 text: codeObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
@@ -61,6 +60,8 @@ export default props => {
 
 
     return (
+    <div className="form__div">
+
         <form className="CodeForm">
             <h2 className="CodeForm__title">{editMode ? "Edit Code" : "New Code"}</h2>
             <fieldset>
@@ -80,27 +81,28 @@ export default props => {
                     onChange={handleControlledInputChange}
                     />
             </div>
-                    </fieldset>
-                    <fieldset>
-                <div className="form-group">
-                    <label htmlFor="codeType">Assign to codeType: </label>
-                    <select
-                        defaultValue=""
-                        name="codeType"
-                        ref={codeTypes}
-                        id="codeType"
-                        className="form-control"
-                    >
-                        <option value="0">Select Language</option>
-                        {codeType.map(c => (
-                            <option key={c.id} value={c.id}>
-                                {c.type}
-                            </option>
-                        ))}
-                    </select>
-                </div>
             </fieldset>
-                    <fieldset>
+            <fieldset>
+                    <div className="form-group">
+                        <label htmlFor="codeType">Assign to codeType: </label>
+                        <select
+                            value={ parseInt(codeObject.codeTypeId) }
+                            name="codeTypeId"
+                            ref={codeTypes}
+                            id="codeType"
+                            className="form-control"
+                            onChange={handleControlledInputChange}
+                        >
+                            <option value="0">Select Language</option>
+                            {codeTypes.map(c => (
+                                <option key={c.id} value={c.id}>
+                                    {c.type}
+                                </option>
+                            ))}
+                        </select>
+            </div>
+            </fieldset>
+            <fieldset>
 
             <div className="form-group">
                 <label htmlFor="code">Code</label>
@@ -141,5 +143,6 @@ export default props => {
                     }}
                 className="btn btn-primary"> {editMode ? "Update Code": "Add Code"} </button>
         </form>
+    </div>
     )
 }

@@ -13,7 +13,7 @@ export const CodeProvider = (props) => {
     const [code, setCode] = useState([])
 
     const getCode = () => {
-        return fetch("http://localhost:8088/code")
+        return fetch("http://localhost:8088/code?_expand=codeType")
             .then(res => res.json())
             .then(setCode)
     }
