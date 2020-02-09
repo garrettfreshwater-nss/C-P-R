@@ -2,7 +2,6 @@ import React, { useContext } from "react"
 import { CodeContext } from "./CodeProvider";
 import Code from "./Code"
 import "./Code.css"
-// import { FriendContext } from "../friends/FriendProvider"
 
 
 export default (props) => {

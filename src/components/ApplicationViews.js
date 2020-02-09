@@ -3,7 +3,8 @@ import { Route } from "react-router-dom"
 import { CodeProvider } from "./code/CodeProvider";
 import CodeForm from "./code/CodeForm";
 import CodeList from "./code/CodeList";
-import { CodeTypeProvider } from "./codeType/codeTypeProvider";
+import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
+
 
 
 export default (props) => {
