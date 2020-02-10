@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import { CodeContext } from "./CodeProvider";
 import Code from "./Code"
-import "./Code.css"
+import "./Code.scss"
 
 
 export default (props) => {
@@ -45,6 +45,10 @@ export default (props) => {
                     })
                 }
             </div>
+
+            
         </>
+
+        
     )
 }

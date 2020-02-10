@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider"
-import "./Code.css"
+import "./Code.scss"
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 
 export default props => {
@@ -60,8 +60,8 @@ export default props => {
 
 
     return (
-    <div className="form__div">
-    
+    <div className="react-form-container">
+
 
         <form className="CodeForm">
         
@@ -114,7 +114,7 @@ export default props => {
                         name="codeSnippet"
                         defaultValue={codeObject.codeSnippet}
                         required
-                        className="form-control"
+                        className="input"
                         placeholder="Paste Code Here"
                         onChange={handleControlledInputChange}
                         />
