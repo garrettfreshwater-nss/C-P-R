@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider"
-import "./Code.css"
+import "./Code.scss"
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 
 export default props => {
@@ -60,9 +60,11 @@ export default props => {
 
 
     return (
-    <div className="form__div">
+    <div className="react-form-container">
+
 
         <form className="CodeForm">
+        
             <h2 className="CodeForm__title">{editMode ? "Edit Code" : "New Code"}</h2>
             <fieldset>
 
@@ -80,68 +82,72 @@ export default props => {
                     proptype="varchar"
                     onChange={handleControlledInputChange}
                     />
-            </div>
+             </div>
             </fieldset>
             <fieldset>
-                    <div className="form-group">
-                        <label htmlFor="codeType">Assign to codeType: </label>
-                        <select
-                            value={ parseInt(codeObject.codeTypeId) }
-                            name="codeTypeId"
-                            ref={codeTypes}
-                            id="codeType"
-                            className="form-control"
-                            onChange={handleControlledInputChange}
-                        >
-                            <option value="0">Select Language</option>
-                            {codeTypes.map(c => (
-                                <option key={c.id} value={c.id}>
-                                    {c.type}
-                                </option>
-                            ))}
-                        </select>
-            </div>
+                <div className="form-group">
+                    <label htmlFor="codeType">Assign to codeType: </label>
+                    <select
+                        value={ parseInt(codeObject.codeTypeId) }
+                        name="codeTypeId"
+                        ref={codeTypes}
+                        id="codeType"
+                        className="form-control"
+                        onChange={handleControlledInputChange}
+                    >
+                        <option value="0">Select Language</option>
+                        {codeTypes.map(c => (
+                            <option key={c.id} value={c.id}>
+                                {c.type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
             </fieldset>
             <fieldset>
 
-            <div className="form-group">
-                <label htmlFor="code">Code</label>
-                <input
-                    type="text"
-                    id="code"
-                    name="codeSnippet"
-                    defaultValue={codeObject.codeSnippet}
-                    required
-                    className="form-control"
-                    placeholder="Paste Code Here"
-                    onChange={handleControlledInputChange}
+                <div className="form-group">
+                    <label htmlFor="code">Code</label>
+                    <textarea
+                        type="textarea"
+                        rows="5" 
+                        cols="50"
+                        id="code"
+                        name="codeSnippet"
+                        defaultValue={codeObject.codeSnippet}
+                        required
+                        className="input"
+                        placeholder="Paste Code Here"
+                        onChange={handleControlledInputChange}
                     />
-            </div>
-                    </fieldset>
-                    
-                    <fieldset>
+                </div>
+                
+            </fieldset>
+            
+            <fieldset>
 
-            <div className="form-group">
-                <label htmlFor="text">Note</label>
-                <input
-                    type="text"
-                    id="text"
-                    name="text"
-                    defaultValue={codeObject.text}
-                    required
-                    className="form-control"
-                    placeholder="Your notes"
-                    onChange={handleControlledInputChange}
-                    />
-            </div>
-                    </fieldset>
-
+                <div className="form-group">
+                    <label htmlFor="text">Note</label>
+                    <input
+                        type="text"
+                        id="text"
+                        name="text"
+                        defaultValue={codeObject.text}
+                        required
+                        className="form-control"
+                        placeholder="Your notes"
+                        onChange={handleControlledInputChange}
+                        />
+                </div>
+            </fieldset>
 
             <button type="submit" onClick={evt => 
                     {evt.preventDefault() 
                     constructNewCode()
                     }}
-                className="btn btn-primary"> {editMode ? "Update Code": "Add Code"} </button>
+                className="btn btn-primary"> {editMode ? "Update": "Add"} 
+            </button>
+
         </form>
     </div>
     )

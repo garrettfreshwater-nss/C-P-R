@@ -1,7 +1,8 @@
 import React, { useContext } from "react"
 import { CodeContext } from "./CodeProvider";
 import Code from "./Code"
-import "./Code.css"
+import "./Code.scss"
+
 
 
 export default (props) => {
@@ -36,14 +37,22 @@ export default (props) => {
     console.log(codeArray)
     return (
         <>
-            <h1>Code</h1>
+        <div className="userCodeView">
+            <h1>Your Code Snippets</h1>
             <div className="code__list">
+            
                 {
                     codeArray.map(c => {
                         return <Code key={c.id} code={c} {...props} />
                     })
+
                 }
             </div>
+        </div>
+
+            
         </>
+
+        
     )
 }
