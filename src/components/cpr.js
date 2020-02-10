@@ -5,6 +5,7 @@ import NavBar from "./nav/NavBar"
 import Login from "./auth/Login"
 import Register from "./auth/Register"
 import "./cpr.css"
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default () => (
     <>

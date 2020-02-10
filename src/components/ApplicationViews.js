@@ -15,16 +15,14 @@ return (
             <CodeTypeProvider>
                 <CodeProvider>
        
-                {/* <Route exact path="/">
-                    <CodeList />
-                </Route> */}
+             
                 
                     <Route exact path="/my__code" render={props => <CodeList {...props} />} />
-{/* 
+
                     <Route
                         exact path="/dashboard" //this is a path created here, renders the form
-                        render={props => <CodeForm {...props} />}
-                    /> */}
+                        render={props => <CodeList {...props} />}
+                    />
 
                     <Route
                         exact path="/add__code" //this is a path created here, renders the form
@@ -37,6 +35,9 @@ return (
    
                 </CodeProvider>
             </CodeTypeProvider>
+
+
+            
 
            
         </>

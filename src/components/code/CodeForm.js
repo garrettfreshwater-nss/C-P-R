@@ -2,6 +2,11 @@ import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider"
 import "./Code.scss"
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import TextareaAutosize from 'react-autosize-textarea';
 
 export default props => {
     const { addCode, updateCode, code } = useContext(CodeContext)
@@ -60,8 +65,8 @@ export default props => {
 
 
     return (
-    <div className="react-form-container">
 
+    <div className="react-form-container">
 
         <form className="CodeForm">
         
@@ -90,11 +95,11 @@ export default props => {
                     <select
                         value={ parseInt(codeObject.codeTypeId) }
                         name="codeTypeId"
-                        ref={codeTypes}
+                        // ref={codeTypes}
                         id="codeType"
                         className="form-control"
                         onChange={handleControlledInputChange}
-                    >
+                        >
                         <option value="0">Select Language</option>
                         {codeTypes.map(c => (
                             <option key={c.id} value={c.id}>
@@ -108,15 +113,13 @@ export default props => {
 
                 <div className="form-group">
                     <label htmlFor="code">Code</label>
-                    <textarea
-                        type="textarea"
-                        rows="5" 
-                        cols="50"
+                    <TextareaAutosize
+                        type="text"
                         id="code"
                         name="codeSnippet"
                         defaultValue={codeObject.codeSnippet}
                         required
-                        className="input"
+                        className="form-control"
                         placeholder="Paste Code Here"
                         onChange={handleControlledInputChange}
                     />
@@ -128,7 +131,7 @@ export default props => {
 
                 <div className="form-group">
                     <label htmlFor="text">Note</label>
-                    <input
+                    <TextareaAutosize
                         type="text"
                         id="text"
                         name="text"
@@ -151,4 +154,4 @@ export default props => {
         </form>
     </div>
     )
-}
+}   
