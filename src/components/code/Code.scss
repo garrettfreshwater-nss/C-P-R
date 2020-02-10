@@ -4,20 +4,21 @@
     text-align: center;
 } */
 
-  section.code {
-    margin: 20px auto;
-    padding: 1em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    width: 550px;
+.userCodeView {
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 
-    background: #D3D3D3;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.516);
-    border: none;
-    border-radius: .5cm;
-  }
+}
+
+.userCodeView h1{
+  max-width : 300px;
+  min-height: fit-content;
+
+}
+
+
 
 .code__name {
   margin: 10px auto;
@@ -48,12 +49,10 @@
 //   font-weight: 700;
 // }
 
-// button.deleteButton{
-//   background-color: darkred;
-//   color: white;
-//   border: none;
-//   border-radius: 6cm;
-// }
+button.deleteButton{
+  background-color: lightcoral;
+
+}
 
 .codeCard_buttons {
   display: flex;
@@ -61,24 +60,48 @@
   justify-content: space-evenly;
   border-radius: .5cm;
 }
+
+.code__list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+
+  .code__card {
+    flex: auto;
+    margin: 40px auto;
+    padding: .6em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    width: auto;
+    background: #D3D3D3;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.516);
+    border-bottom: 0.04em groove black;
+    border-radius: .8cm;
+    }
+}
+
 .code__codeSnippet {
     background: white;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    text-align: left;
+    contain: content;
+    overflow: hidden;
     padding: 1em;
     margin: 1em;
-    background: #FFFFFF;
+    color: white;
+    background: rgb(21, 18, 39);
     box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
     border-radius: .5cm;
 }
 .code__text {
   overflow-y: scroll;
   padding: 1em;
-
   margin: 10px;
   width: auto;
   background: none;
 }
+
 html {
   font-size: 16px;
  }
@@ -90,7 +113,7 @@ html {
  form {
   margin-right: auto;
   margin-left: auto;
-  max-width: 320px;
+  max-width: 600px;
  }
  
  fieldset {
@@ -176,12 +199,3 @@ html {
 //     border-radius: .5cm;
 
 // }
-
-
-
-/* 
-.current__code < section {
-
-    background-color: white;
-    
-} */

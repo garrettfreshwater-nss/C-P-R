@@ -108,8 +108,10 @@ export default props => {
 
                 <div className="form-group">
                     <label htmlFor="code">Code</label>
-                    <input
-                        type="text"
+                    <textarea
+                        type="textarea"
+                        rows="5" 
+                        cols="50"
                         id="code"
                         name="codeSnippet"
                         defaultValue={codeObject.codeSnippet}
@@ -117,8 +119,9 @@ export default props => {
                         className="input"
                         placeholder="Paste Code Here"
                         onChange={handleControlledInputChange}
-                        />
+                    />
                 </div>
+                
             </fieldset>
             
             <fieldset>

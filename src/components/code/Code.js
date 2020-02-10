@@ -5,18 +5,16 @@ import { PrismCode } from "../notes/prismComponent";
 //testing our form react comp
 import ReactDOM from "react-dom"
 
-// const code = `
-// const foo = 'foo';
-// const bar = 'bar';
-// console.log(foo + bar);
-// `
-// const Example = () => (
-//   <PrismCode
-//     code={code}
-//     language="js"
-//     plugins={["line-numbers"]}
-//   />
-// )
+const codeBit = `
+code.codeSnippet
+`
+const Example = () => (
+  <PrismCode
+    code={codeBit}
+    language="js"
+    plugins={["line-numbers"]}
+  />
+)
 
 
 const formContainer = document.querySelector('.react-form-container');
@@ -54,7 +52,7 @@ export default ({ code, history }) => {
 
 
     return(
-            <section className="code">
+            <section className="code__card">
                 <h3 className="code__name">{ code.name }</h3>
                 <div className="code__codeType">{ code.codeType.type }</div>
                 <div className="code__codeSnippet">{  

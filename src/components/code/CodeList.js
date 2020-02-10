@@ -4,6 +4,7 @@ import Code from "./Code"
 import "./Code.scss"
 
 
+
 export default (props) => {
     const { code } = useContext(CodeContext)
     // const { friends } = useContext(FriendContext)
@@ -36,15 +37,18 @@ export default (props) => {
     console.log(codeArray)
     return (
         <>
-            <h1>Code</h1>
+        <div className="userCodeView">
+            <h1>Your Code Snippets</h1>
             <div className="code__list">
             
                 {
                     codeArray.map(c => {
                         return <Code key={c.id} code={c} {...props} />
                     })
+
                 }
             </div>
+        </div>
 
             
         </>
