@@ -7,11 +7,15 @@ import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 
 
 
+
 export default (props) => {
 return (
         <>
         {/* Render the location list when http://localhost:3000/ */}
            
+       
+
+
             <CodeTypeProvider>
                 <CodeProvider>
        
@@ -35,9 +39,6 @@ return (
    
                 </CodeProvider>
             </CodeTypeProvider>
-
-
-            
 
            
         </>

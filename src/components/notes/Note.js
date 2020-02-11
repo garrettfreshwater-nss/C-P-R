@@ -6,31 +6,32 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { NoteContext } from "../notes/NoteProvider";
 
 
 
 
-export default ({ code, history }) => {
+export default ({ note, history }) => {
 
 
     
-    const {deleteCode} = useContext(CodeContext)
+    const {deleteNote} = useContext(NoteContext)
     
-    const activeUserCode = (code, history) => {
+    const activeUserNote = (note, history) => {
         
-    if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
+    if(note.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
     
-    <div className="codeCard_buttons"> 
-        <button className="active__code" onClick={
+    <div className="noteCard_buttons"> 
+        <button className="active__note" onClick={
               () => {
-               history.push(`/code/edit/${code.id}`)
+               history.push(`/note/edit/${note.id}`)
                }}>Edit
         </button>
     
         <button className="deleteButton" onClick={
             () => {
-                deleteCode(code)
+                deleteNote(note)
                 .then(() => {
                     history.push("/my__code")            
                 })
@@ -46,46 +47,35 @@ export default ({ code, history }) => {
 
     return(
 
-            <section className="code__card">
+            <section className="note__card">
 
-                <div className="code__titleDiv">
+                {/* <div className="code__titleDiv">
                     <h3 className="code__name">{ code.name }</h3>
                     <div className="code__codeType">{ code.codeType.type }</div>
-                </div>
+                </div> */}
 
-                <div className="code__codeSnippet">{  
 
-                <PrismCode
-                        code={ code.codeSnippet }
-                        language="react"
-                        plugins={["line-numbers"]}
-                    />
-                    
-                }
-
-                </div>
-
-                <div className="code__text">{
+                <div className="note__text">{
 
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
                             <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                { code.name }
+                                { note.name }
                             </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
-                        <Card.Body>{ code.text }</Card.Body>
+                        <Card.Body>{ note.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card>
                             <Card.Header>
                             <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            { code.name }
+                            { note.userId }
                             </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ code.text }</Card.Body>
+                            <Card.Body>{ note.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>
@@ -96,11 +86,10 @@ export default ({ code, history }) => {
 
                 
 
-                {activeUserCode(code, history)}
+                {activeUserNote(note, history)}
 
             </section>
 
     )
 
 }
-

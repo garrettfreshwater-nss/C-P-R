@@ -3,10 +3,9 @@ import { CodeContext } from "./CodeProvider";
 import Code from "./Code"
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
+
+
 
 
 
@@ -43,6 +42,7 @@ export default (props) => {
     }, [code])
 
 
+
     const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
     // array vs. state
 
@@ -54,28 +54,27 @@ export default (props) => {
             <h1>Your Code Snippets</h1>
 
             <select
-            
-                         value={ parseInt(codeObject.codeTypeId) }
-                        name="codeTypeId"
-                       
-                        id="codeType"
-                        className="form-control"
-                        onChange={handleControlledInputChange}
-                        
-                        >
-                    
-                        <option value="0">Select Language</option>
-                        {codeTypes.map(c => (
-                            <option key={c.id} value={c.id}>
-                                {c.type}
-                            </option>
+                value={ parseInt(codeObject.codeTypeId) }
+                name="codeTypeId"
+                id="codeType"
+                className="form-control"
+                onChange={handleControlledInputChange}
+                >
+            <option value="0">Select Language</option>
+            {codeTypes.map(c => (
+                <option key={c.id} value={c.id}>
+                    {c.type}
+                </option>
 
 
                         ))}
-                    </select>
+            </select>
+           
+
+                
+
 
             <div className="code__list">
-            
                 {
                     filterCodeType.map(c => {
                         return <Code key={c.id} code={c} {...props} />
