@@ -4,6 +4,7 @@ import { CodeProvider } from "./code/CodeProvider";
 import CodeForm from "./code/CodeForm";
 import CodeList from "./code/CodeList";
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
+import { NoteProvider } from "./notes/NoteProvider";
 
 
 
@@ -15,7 +16,7 @@ return (
            
        
 
-
+        <NoteProvider>
             <CodeTypeProvider>
                 <CodeProvider>
        
@@ -39,6 +40,7 @@ return (
    
                 </CodeProvider>
             </CodeTypeProvider>
+        </NoteProvider>
 
            
         </>

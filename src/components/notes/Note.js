@@ -61,11 +61,11 @@ export default ({ note, history }) => {
                         <Card>
                             <Card.Header>
                             <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                { note.name }
+                                { note.codeId }
                             </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="0">
-                        <Card.Body>{ note.text }</Card.Body>
+                        <Card.Body>{ note.codeId.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                         <Card>
@@ -75,7 +75,7 @@ export default ({ note, history }) => {
                             </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ note.text }</Card.Body>
+                            <Card.Body>{ note.codeId.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>

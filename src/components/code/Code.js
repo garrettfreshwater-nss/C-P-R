@@ -6,17 +6,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { NoteContext } from "../notes/NoteProvider";
 
 
 
 
-export default ({ code, history }) => {
+export default ({ code, note, history }) => {
 
 
     
     const {deleteCode} = useContext(CodeContext)
+    const {deleteNote} = useContext(NoteContext)
     
-    const activeUserCode = (code, history) => {
+    const activeUserCode = (code, note, history) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
@@ -31,6 +33,15 @@ export default ({ code, history }) => {
         <button className="deleteButton" onClick={
             () => {
                 deleteCode(code)
+                .then(() => {
+                    history.push("/my__code")            
+                })
+            }}>Delete
+        </button>
+
+        <button className="deleteButton" onClick={
+            () => {
+                deleteNote(note)
                 .then(() => {
                     history.push("/my__code")            
                 })
@@ -90,13 +101,41 @@ export default ({ code, history }) => {
                         </Card>
                     </Accordion>
 
-
                  }
                  </div>
 
+                 <div className="note__text">{
+
+                    <Accordion defaultActiveKey="0">
+                        <Card>
+                            <Card.Header>
+                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                {/* { parseInt(note.codeId, 10) } */   note }
+                            </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                        <Card.Body>{ note.text }</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                        {/* <Card>
+                            <Card.Header>
+                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
+                            { note.codeId }
+                            </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="1">
+                            <Card.Body>{ note.codeId }</Card.Body>
+                            </Accordion.Collapse>
+                        </Card> */}
+                    </Accordion>
+
+
+                    }
+                    </div>
+
                 
 
-                {activeUserCode(code, history)}
+                {activeUserCode(code, note, history)}
 
             </section>
 
