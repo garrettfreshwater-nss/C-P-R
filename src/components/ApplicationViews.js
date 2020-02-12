@@ -27,7 +27,7 @@ return (
                     />
 
                     <Route
-                        exact path="/add__note" //this is a path created here, renders the form
+                        exact path="/add__note/:codeId(\d+)" //this is a path created here, renders the form
                         render={props => <NoteForm {...props} />}
                     />
 

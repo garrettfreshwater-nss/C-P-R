@@ -7,6 +7,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import TextareaAutosize from 'react-autosize-textarea';
+import { NoteContext } from "../notes/NoteProvider";
 
 
 export default props => {
@@ -36,7 +37,8 @@ export default props => {
             setCode(selectedCode)
             console.log(selectedCode)
         }
-    }
+        }
+
 
     useEffect(() => {
         setDefaults()

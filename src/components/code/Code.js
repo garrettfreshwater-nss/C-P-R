@@ -9,13 +9,14 @@ import Button from 'react-bootstrap/Button';
 import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "./CurrentNoteComponent";
 
+
 // import { UserContext } from "../users/UserProvider";
  // const userWhoPosted = users.find(u => u.id === userId)
 
 
 
 
-export default ({ code, note, history }) => {
+export default ({ code, note, user, history }) => {
 
     
     
@@ -95,6 +96,7 @@ export default ({ code, note, history }) => {
                     
                 }
 
+
                 </div>
 
                 <div className="code__text">{
@@ -110,41 +112,33 @@ export default ({ code, note, history }) => {
                         <Card.Body>{ code.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            { code.name }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ code.text }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
                     </Accordion>
 
-                 }
+                 }  {activeUserCode(code, note, history)}
+
+
+                    <div className="users__note__text">
+                    
+                        <button className="addNote" onClick={
+                            () => {
+                        addNote(note)
+                            history.push(`/add__note/${code.id}`)
+                            }}>Comment
+                        </button>
+                    
+                    {
+
+                        currentCodesNotes.map (note => {
+                            return <CurrentNoteComponent {...history} key={note.id} note={note} />
+                        })
+
+                        }
+
+                        </div>
                  </div>
-                 <button className="addNote" onClick={
-                        () => {
-                    addNote(note)
-                        history.push(`/add__note`)
-                        }}>Comment
-                    </button>
-        
 
-                 <div className="note__text">{
-
-                    currentCodesNotes.map (note => {
-                        return <CurrentNoteComponent {...history} key={note.id} note={note} />
-                    })
-
-                    }
-
-                    </div>
-
-                
-
-                {activeUserCode(code, note, history)}
+                 
+                  
 
             </section>
 

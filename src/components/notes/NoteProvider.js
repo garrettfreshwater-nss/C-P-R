@@ -19,7 +19,7 @@ export const NoteProvider = (props) => {
     }
 
     const addNote = note => {
-        return fetch("http://localhost:8088/note", {
+        return fetch("http://localhost:8088/notes", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

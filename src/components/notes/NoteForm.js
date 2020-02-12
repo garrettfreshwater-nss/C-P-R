@@ -7,12 +7,12 @@ import { CodeContext } from "../code/CodeProvider";
 
 export default props => {
 
-    const { addNote, updateNote, note } = useContext(NoteContext)
-    const { code } = useContext(CodeContext)
+    const { addNote, updateNote, notes } = useContext(NoteContext)
     const [ noteObject, setNote, codeObject ] = useState({})
+    const { code } = useContext(CodeContext)
 
     const editMode = props.match.params.hasOwnProperty("noteId")
-    const addMode = props.match.params.hasOwnProperty("codeId")
+   
 
     const handleControlledInputChange = (evt) => {
         /*
@@ -26,9 +26,9 @@ export default props => {
     }
 
     const setDefaults = () => {
-        if (addMode) {
+        if (editMode) {
             const noteId = parseInt(props.match.params.noteId)
-            const selectedNote = note.find(c => c.id === noteId) || {}
+            const selectedNote = notes.find(c => c.id === noteId) || {}
             setNote(selectedNote)
             console.log(selectedNote)
         }
@@ -36,14 +36,20 @@ export default props => {
 
     useEffect(() => {
         setDefaults()
-    }, [note])
+    }, [notes])
 
     const constructNewNote = () => {
+       const currentCodeCardId = parseInt(props.match.params.codeId, 10) //how to get id through props
+    //    const foundCodeCard = code.find(c => c.id === currentCodeCardId)
+
+       
+
         if (editMode) {
             updateNote({
                 id: noteObject.id,
                 text: noteObject.text,
-                userId: parseInt(localStorage.getItem("cpr__user"), 10)
+                userId: parseInt(localStorage.getItem("cpr__user"), 10),
+                codeId: currentCodeCardId
             })
                 .then(() => props.history.push("/"))
         } else {
@@ -51,11 +57,13 @@ export default props => {
                 id: noteObject.id,
                 text: noteObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
-                
+                codeId: currentCodeCardId
             })
             .then(() => props.history.push("/dashboard"))
         }
     }
+
+    console.log(noteObject.codeId)
 
     return (
 

@@ -13,11 +13,11 @@ export default (props) => {
 
     // const { codeTypes } = useContext(CodeTypeContext)
     const [ noteObject, setNote ] = useState({})
-    const { note } = useContext(NoteContext)
+    const { notes } = useContext(NoteContext)
 
     const noteArray = []
 
-    const activeUsersNote = note.filter(a => {
+    const activeUsersNote = notes.filter(a => {
         return a.userId === parseInt(localStorage.getItem("cpr__user"), 10)
     })
 
@@ -38,7 +38,7 @@ export default (props) => {
 
 
     useEffect(() => {
-    }, [note])
+    }, [notes])
 
 
 
