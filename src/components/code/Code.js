@@ -7,17 +7,44 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { NoteContext } from "../notes/NoteProvider";
+import CurrentNoteComponent from "./CurrentNoteComponent";
+
+// import { UserContext } from "../users/UserProvider";
+ // const userWhoPosted = users.find(u => u.id === userId)
 
 
 
 
 export default ({ code, note, history }) => {
 
-
+    
     
     const {deleteCode} = useContext(CodeContext)
-    const {deleteNote} = useContext(NoteContext)
+    const { notes, deleteNote} = useContext(NoteContext)
+    // const { users } = useContext(UserContext)
+
+  
+   
+    const currentCodesNotes= notes.filter(n => n.codeId === code.id)
+    console.log( currentCodesNotes, "notearray notes" )
+    // const mappedNotes = noteArray.map (sn => sn.codeId === code.id)
+
+    // const newNotes = noteArray.filter(a => {
+    //     return mappedNotes.push(a)
+    // })
+    // const resultsNotes = mappedNotes.filter (fn => fn.)
     
+
+
+
+
+
+ 
+    //  noteArray.map(note.id =>
+    //  console.log( noteArray ) 
+    //  )
+
+
     const activeUserCode = (code, note, history) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
@@ -54,6 +81,8 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
+
+   
 
     return(
 
@@ -106,29 +135,9 @@ export default ({ code, note, history }) => {
 
                  <div className="note__text">{
 
-                    <Accordion defaultActiveKey="0">
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                {/* { parseInt(note.codeId, 10) } */   note }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                        <Card.Body>{ note.text }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                        {/* <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            { note.codeId }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ note.codeId }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card> */}
-                    </Accordion>
-
+                    currentCodesNotes.map (note => {
+                        return <CurrentNoteComponent {...history} key={note.id} note={note} />
+                    })
 
                     }
                     </div>

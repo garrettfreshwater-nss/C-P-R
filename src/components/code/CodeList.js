@@ -1,9 +1,13 @@
 import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider";
+import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import Code from "./Code"
+import Note from "../notes/Note";
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CodeTypeContext } from "../codeType/CodeTypeProvider";
+
+
+
 
 
 
@@ -14,6 +18,8 @@ export default (props) => {
     const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
+    
+   
 
 
     const codeArray = []
@@ -25,6 +31,8 @@ export default (props) => {
     activeUsersCode.map(a => {
         return codeArray.push(a)
     })
+
+    
 
     const handleControlledInputChange = (evt) => {
         /*
@@ -40,8 +48,7 @@ export default (props) => {
 
     useEffect(() => {
     }, [code])
-
-
+    
 
     const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
     // array vs. state
@@ -71,7 +78,6 @@ export default (props) => {
             </select>
            
 
-                
 
 
             <div className="code__list">

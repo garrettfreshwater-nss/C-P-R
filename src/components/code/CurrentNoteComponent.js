@@ -11,8 +11,7 @@ import { NoteContext } from "../notes/NoteProvider";
 
 export default ({ note, history }) => {
 
-    // const { codeNote } = useContext(CodeNoteContext)
-    // const codeNoteArray = codeNote.map(cn => cn.id === parseInt(codeNote.codeId)) || []
+
     
     const {deleteNote} = useContext(NoteContext)
     
@@ -53,13 +52,11 @@ export default ({ note, history }) => {
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                { note.codeId }
-                            </Accordion.Toggle>
+                           { }
                             </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                        <Card.Body>{ note.codeId.text }</Card.Body>
-                            </Accordion.Collapse>
+                     
+                        <Card.Body>{ note.text }</Card.Body>
+                            
                         </Card>
                         <Card>
                             <Card.Header>
@@ -68,7 +65,7 @@ export default ({ note, history }) => {
                             </Accordion.Toggle>
                             </Card.Header>
                             <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ note.codeId.text }</Card.Body>
+                            <Card.Body>{ note.text }</Card.Body>
                             </Accordion.Collapse>
                         </Card>
                     </Accordion>

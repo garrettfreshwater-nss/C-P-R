@@ -28,7 +28,7 @@ export const NoteProvider = (props) => {
         })
             .then(getNote)
     }
-
+ 
     const deleteNote = note => {
         return fetch(`http://localhost:8088/note/${note.id}`, {
             method: "DELETE",

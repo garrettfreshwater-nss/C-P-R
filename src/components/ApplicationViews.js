@@ -19,9 +19,8 @@ return (
         <NoteProvider>
             <CodeTypeProvider>
                 <CodeProvider>
+               
        
-             
-                
                     <Route exact path="/my__code" render={props => <CodeList {...props} />} />
 
                     <Route
@@ -37,7 +36,7 @@ return (
                         path="/code/edit/:codeId(\d+)"
                         render={props => <CodeForm {...props} />}
                     />
-   
+                    
                 </CodeProvider>
             </CodeTypeProvider>
         </NoteProvider>

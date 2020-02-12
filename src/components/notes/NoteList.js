@@ -1,10 +1,8 @@
 import React, { useContext, useState, useEffect } from "react"
-
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { CodeTypeContext } from "../codeType/CodeTypeProvider";
+// import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import { NoteContext } from "./NoteProvider";
-import Note from "./Note";
 
 
 
@@ -15,7 +13,6 @@ export default (props) => {
     // const { codeTypes } = useContext(CodeTypeContext)
     const [ noteObject, setNote ] = useState({})
     const { note } = useContext(NoteContext)
-
 
     const noteArray = []
 
@@ -51,7 +48,7 @@ export default (props) => {
 
     return (
         <>
-        <div className="userCodeView">
+        {/* <div className="userCodeView">
             <h1>Your Code Snippets</h1>
 
             <select
@@ -75,7 +72,7 @@ export default (props) => {
                 
 
 
-        </div>
+        </div> */}
 
             
             <div className="code__list">

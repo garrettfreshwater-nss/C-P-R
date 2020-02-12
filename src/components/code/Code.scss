@@ -81,9 +81,13 @@ button.deleteButton{
     padding: 1em;
     margin: 1em;
     color: white !important;
-    background: rgb(21, 18, 39);
-    box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
-    border-radius: .5cm;
+    // background: rgb(21, 18, 39);
+    // box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
+    // border-radius: .5cm;
+}
+
+select {
+  max-width: 20%;
 }
 .code__text {
   overflow-y: scroll;
