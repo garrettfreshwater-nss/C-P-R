@@ -22,9 +22,9 @@ export default ({ note, history }) => {
     
     <div className="noteCard_buttons"> 
         <button className="active__note" onClick={
-              () => {
-               history.push(`/note/edit/${note.id}`)
-               }}>Edit
+            () => {
+            history.push(`/note/edit/${note.id}`)
+            }}>Edit
         </button>
     
         <button className="deleteButton" onClick={

@@ -9,14 +9,14 @@ import { NoteContext } from "../notes/NoteProvider";
 
 
 
-export default ({ note, history }) => {
+export default ({ note, addNote, history }) => {
 
     // const { codeNote } = useContext(CodeNoteContext)
     // const codeNoteArray = codeNote.map(cn => cn.id === parseInt(codeNote.codeId)) || []
     
     const {deleteNote} = useContext(NoteContext)
     
-    const activeUserNote = (note, history) => {
+    const activeUserNote = (note, addNote, history) => {
         
     if(note.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (

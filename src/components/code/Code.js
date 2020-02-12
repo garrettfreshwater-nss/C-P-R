@@ -20,7 +20,8 @@ export default ({ code, note, history }) => {
     
     
     const {deleteCode} = useContext(CodeContext)
-    const { notes, deleteNote} = useContext(NoteContext)
+
+    const { notes, addNote, deleteNote} = useContext(NoteContext)
     // const { users } = useContext(UserContext)
 
   
@@ -54,17 +55,10 @@ export default ({ code, note, history }) => {
         <button className="active__code" onClick={
               () => {
                history.push(`/code/edit/${code.id}`)
-               }}>Edit
+               
+                }}>Edit
         </button>
     
-        <button className="deleteButton" onClick={
-            () => {
-                deleteCode(code)
-                .then(() => {
-                    history.push("/my__code")            
-                })
-            }}>Delete
-        </button>
 
         <button className="deleteButton" onClick={
             () => {
@@ -81,8 +75,6 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
-
-   
 
     return(
 
@@ -132,6 +124,13 @@ export default ({ code, note, history }) => {
 
                  }
                  </div>
+                 <button className="addNote" onClick={
+                        () => {
+                    addNote(note)
+                        history.push(`/add__note`)
+                        }}>Comment
+                    </button>
+        
 
                  <div className="note__text">{
 
@@ -140,6 +139,7 @@ export default ({ code, note, history }) => {
                     })
 
                     }
+
                     </div>
 
                 

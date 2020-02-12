@@ -3,6 +3,7 @@ import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import { NoteContext } from "./NoteProvider";
+import Note from "./Note";
 
 
 
@@ -48,40 +49,12 @@ export default (props) => {
 
     return (
         <>
-        {/* <div className="userCodeView">
-            <h1>Your Code Snippets</h1>
-
-            <select
-                value={ parseInt(noteObject.codeTypeId) }
-                name="codeTypeId"
-                id="codeType"
-                className="form-control"
-                onChange={handleControlledInputChange}
-                >
-            <option value="0">Select Language</option>
-            {codeTypes.map(c => (
-                <option key={c.id} value={c.id}>
-                    {c.type}
-                </option>
-
-
-                        ))}
-            </select>
-           
-
-                
-
-
-        </div> */}
-
             
             <div className="code__list">
                 {
                     activeUsersNote.map(n => {
                         return <Note key={n.id} note={n} {...props} />
                     })
-
-
 
                 }
             </div>

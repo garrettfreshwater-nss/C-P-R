@@ -16,6 +16,7 @@ export default props => {
     const [ codeObject, setCode ] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("codeId")
+    const addMode = props.match.params.hasOwnProperty("codeId")
 
     const handleControlledInputChange = (evt) => {
         /*
@@ -114,7 +115,7 @@ export default props => {
             <fieldset>
 
                 <div className="form-group">
-                    <label htmlFor="code">Code</label>
+                <label htmlFor="code">Code</label>
                     <TextareaAutosize
                         type="text"
                         id="code"
