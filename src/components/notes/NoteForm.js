@@ -8,8 +8,7 @@ import { CodeContext } from "../code/CodeProvider";
 export default props => {
 
     const { addNote, updateNote, notes } = useContext(NoteContext)
-    const [ noteObject, setNote, codeObject ] = useState({})
-    const { code } = useContext(CodeContext)
+    const [ noteObject, setNote ] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("noteId")
    
@@ -39,8 +38,8 @@ export default props => {
     }, [notes])
 
     const constructNewNote = () => {
-       const currentCodeCardId = parseInt(props.match.params.codeId, 10) //how to get id through props
-    //    const foundCodeCard = code.find(c => c.id === currentCodeCardId)
+       const currentCodeCardId = parseInt(props.match.params.codeId, 10) 
+       //how to get id through props
 
        
 

@@ -6,9 +6,6 @@ import React, { useState, useEffect } from "react"
 */
 export const CodeContext = React.createContext()
 
-/*
- This component establishes what data can be used.
- */
 export const CodeProvider = (props) => {
     const [code, setCode] = useState([])
 
@@ -48,7 +45,7 @@ export const CodeProvider = (props) => {
     }
 
     /*
-        Load all animals when the component is mounted. Ensure that
+        Load all code when the component is mounted. Ensure that
         an empty array is the second argument to avoid infinite loop.
     */
     useEffect(() => {
@@ -56,7 +53,6 @@ export const CodeProvider = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log("****  CoDe APPLICATION STATE CHANGED  ****")
     }, [code])
 
     return (

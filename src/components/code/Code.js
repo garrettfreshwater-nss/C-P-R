@@ -20,31 +20,20 @@ export default ({ code, note, user, history }) => {
 
     
     
-    const {deleteCode} = useContext(CodeContext)
-
-    const { notes, addNote, deleteNote} = useContext(NoteContext)
+    const { deleteCode } = useContext(CodeContext)
+    const { notes, addNote} = useContext(NoteContext)
     // const { users } = useContext(UserContext)
 
   
    
     const currentCodesNotes= notes.filter(n => n.codeId === code.id)
-    console.log( currentCodesNotes, "notearray notes" )
+    console.log( currentCodesNotes, "noteArray notes" )
     // const mappedNotes = noteArray.map (sn => sn.codeId === code.id)
 
     // const newNotes = noteArray.filter(a => {
     //     return mappedNotes.push(a)
     // })
-    // const resultsNotes = mappedNotes.filter (fn => fn.)
     
-
-
-
-
-
- 
-    //  noteArray.map(note.id =>
-    //  console.log( noteArray ) 
-    //  )
 
 
     const activeUserCode = (code, note, history) => {
@@ -63,7 +52,7 @@ export default ({ code, note, user, history }) => {
 
         <button className="deleteButton" onClick={
             () => {
-                deleteNote(note)
+                deleteCode(code)
                 .then(() => {
                     history.push("/my__code")            
                 })

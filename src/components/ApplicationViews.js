@@ -6,6 +6,8 @@ import CodeList from "./code/CodeList";
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 import { NoteProvider } from "./notes/NoteProvider";
 import NoteForm from "./notes/NoteForm";
+import DashboardCodeList from "./code/DashboardCodeList";
+import UserCodeList from "./code/UserCodeList";
 
 
 
@@ -17,13 +19,15 @@ return (
         <NoteProvider>
             <CodeTypeProvider>
                 <CodeProvider>
-               
-{/*        
-                    <Route exact path="/my__code" render={props => <CodeList {...props} />} /> */}
 
                     <Route
                         exact path="/dashboard" //this is a path created here, renders the form
-                        render={props => <CodeList {...props} />}
+                        render={props => <DashboardCodeList {...props} />}
+                    />
+
+                    <Route
+                        exact path="/dashboard" //this is a path created here, renders the form
+                        render={props => <UserCodeList {...props} />}
                     />
 
                     <Route
@@ -45,6 +49,6 @@ return (
             </CodeTypeProvider>
         </NoteProvider>
 
-          </>
+        </>
     )
 }

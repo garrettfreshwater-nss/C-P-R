@@ -19,7 +19,7 @@ export default (props) => {
 
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
-         <Navbar.Brand href="/">Copy-Paste-Refactor</Navbar.Brand>
+         <Navbar.Brand href="/dashboard">Copy-Paste-Refactor</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
@@ -31,8 +31,8 @@ export default (props) => {
                     <NavDropdown.Item href="/my__code">React</NavDropdown.Item>
                     <NavDropdown.Item href="/my__code">C#</NavDropdown.Item>
                     <NavDropdown.Item href="/my__code">CSS</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    {/* <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>
                 </Nav>
 

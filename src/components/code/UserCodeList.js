@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider";
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import Code from "./Code"
+import Note from "../notes/Note";
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -12,6 +13,7 @@ export default (props) => {
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
     
+   
 
 
     const codeArray = []

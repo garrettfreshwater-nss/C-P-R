@@ -3,11 +3,7 @@ import { CodeContext } from "./CodeProvider"
 import "./Code.scss"
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Accordion from 'react-bootstrap/Accordion';
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
 import TextareaAutosize from 'react-autosize-textarea';
-import { NoteContext } from "../notes/NoteProvider";
 
 
 export default props => {
@@ -17,7 +13,6 @@ export default props => {
     const [ codeObject, setCode ] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("codeId")
-    const addMode = props.match.params.hasOwnProperty("codeId")
 
     const handleControlledInputChange = (evt) => {
         /*

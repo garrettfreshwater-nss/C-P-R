@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from "react"
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import { NoteContext } from "./NoteProvider";
 import Note from "./Note";
 
@@ -11,7 +10,6 @@ import Note from "./Note";
 
 export default (props) => {
 
-    // const { codeTypes } = useContext(CodeTypeContext)
     const [ noteObject, setNote ] = useState({})
     const { notes } = useContext(NoteContext)
 

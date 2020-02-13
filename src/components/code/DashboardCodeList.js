@@ -12,6 +12,7 @@ export default (props) => {
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
     
+   
 
 
     const codeArray = []
@@ -43,13 +44,13 @@ export default (props) => {
     
 
     const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
+    const fullCodeView = code || []
     // array vs. state
 
-    console.log(filterCodeType)
 
     return (
         <>
-        <div className="userCodeView">
+        <div className="dashboardCodeView">
             <h1>Your Code Snippets</h1>
 
             <select
@@ -78,6 +79,11 @@ export default (props) => {
                         return <Code key={c.id} code={c} {...props} />
                     })
 
+                }
+                {
+                    fullCodeView.map(c => {
+                        return <Code key={c.id} code={c} {...props} />
+                    })
                 }
             </div>
         </div>
