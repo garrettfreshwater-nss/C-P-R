@@ -15,7 +15,7 @@ export const CodeTypeProvider = (props) => {
     //CodeType is the name of the data in our application now.
 
     const getCodeTypes = () => {
-        return fetch("http://localhost:8088/codeTypes?_expand=type")
+        return fetch("http://localhost:8088/codeTypes?_expand=type&_embed=code")
             .then(res => res.json())
             .then(setCodeTypes)
     }

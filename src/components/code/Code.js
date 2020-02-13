@@ -1,29 +1,53 @@
 import React, { useContext } from "react"
 import "./Code.scss"
 import { CodeContext } from "./CodeProvider";
-import { PrismCode } from "../notes/prismComponent";
-//testing our form react comp
-import ReactDOM from "react-dom"
-
-const codeBit = `
-code.codeSnippet
-`
-const Example = () => (
-  <PrismCode
-    code={codeBit}
-    language="js"
-    plugins={["line-numbers"]}
-  />
-)
+import { PrismCode } from "./PrismComponent";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Accordion from 'react-bootstrap/Accordion';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
+import { NoteContext } from "../notes/NoteProvider";
+import CurrentNoteComponent from "./CurrentNoteComponent";
 
 
-const formContainer = document.querySelector('.react-form-container');
+// import { UserContext } from "../users/UserProvider";
+ // const userWhoPosted = users.find(u => u.id === userId)
 
-export default ({ code, history }) => {
+
+
+
+export default ({ code, note, user, history }) => {
+
+    
     
     const {deleteCode} = useContext(CodeContext)
+
+    const { notes, addNote, deleteNote} = useContext(NoteContext)
+    // const { users } = useContext(UserContext)
+
+  
+   
+    const currentCodesNotes= notes.filter(n => n.codeId === code.id)
+    console.log( currentCodesNotes, "notearray notes" )
+    // const mappedNotes = noteArray.map (sn => sn.codeId === code.id)
+
+    // const newNotes = noteArray.filter(a => {
+    //     return mappedNotes.push(a)
+    // })
+    // const resultsNotes = mappedNotes.filter (fn => fn.)
     
-    const activeUserCode = (code, history) => {
+
+
+
+
+
+ 
+    //  noteArray.map(note.id =>
+    //  console.log( noteArray ) 
+    //  )
+
+
+    const activeUserCode = (code, note, history) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
@@ -32,14 +56,16 @@ export default ({ code, history }) => {
         <button className="active__code" onClick={
               () => {
                history.push(`/code/edit/${code.id}`)
-               }}>Edit
+               
+                }}>Edit
         </button>
     
+
         <button className="deleteButton" onClick={
             () => {
-                deleteCode(code)
+                deleteNote(note)
                 .then(() => {
-                    history.push("/")            
+                    history.push("/my__code")            
                 })
             }}>Delete
         </button>
@@ -52,10 +78,16 @@ export default ({ code, history }) => {
 
 
     return(
+
             <section className="code__card">
-                <h3 className="code__name">{ code.name }</h3>
-                <div className="code__codeType">{ code.codeType.type }</div>
+
+                <div className="code__titleDiv">
+                    <h3 className="code__name">{ code.name }</h3>
+                    <div className="code__codeType">{ code.codeType.type }</div>
+                </div>
+
                 <div className="code__codeSnippet">{  
+
                 <PrismCode
                         code={ code.codeSnippet }
                         language="react"
@@ -63,10 +95,51 @@ export default ({ code, history }) => {
                     />
                     
                 }
+
+
                 </div>
 
-                <div className="code__text">{ code.text }</div>
-                {activeUserCode(code, history)}
+                <div className="code__text">{
+
+                    <Accordion defaultActiveKey="0">
+                        <Card>
+                            <Card.Header>
+                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                { code.name }
+                            </Accordion.Toggle>
+                            </Card.Header>
+                            <Accordion.Collapse eventKey="0">
+                        <Card.Body>{ code.text }</Card.Body>
+                            </Accordion.Collapse>
+                        </Card>
+                    </Accordion>
+
+                 }  {activeUserCode(code, note, history)}
+
+
+                    <div className="users__note__text">
+                    
+                        <button className="addNote" onClick={
+                            () => {
+                        addNote(note)
+                            history.push(`/add__note/${code.id}`)
+                            }}>Comment
+                        </button>
+                    
+                    {
+
+                        currentCodesNotes.map (note => {
+                            return <CurrentNoteComponent {...history} key={note.id} note={note} />
+                        })
+
+                        }
+
+                        </div>
+                 </div>
+
+                 
+                  
+
             </section>
 
     )
