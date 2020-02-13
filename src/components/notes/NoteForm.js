@@ -50,7 +50,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
             })
-                .then(() => props.history.push("/"))
+                .then(() => props.history.push("/my__code"))
         } else {
             addNote({
                 id: noteObject.id,
@@ -58,7 +58,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
             })
-            .then(() => props.history.push("/dashboard"))
+            .then(() => props.history.push("/my__code"))
         }
     }
 

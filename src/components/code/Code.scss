@@ -47,7 +47,6 @@ button.deleteButton{
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  border-radius: .5cm;
 }
 
 .code__list {
@@ -184,18 +183,15 @@ html {
   }
  }
 
+ .note__card {
+   margin: 30px;
+ }
 
-// .CodeForm {
-//     padding: 1em;
-//     width: 500px;
-//     height: 555px;
-//     background: #D3D3D3;
-//     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
-//     margin-top: 40px;
-//     margin-left: auto;
-//     margin-right: auto;
-//     margin-bottom: auto;
-//     text-align: left;
-//     border-radius: .5cm;
-
-// }
+ button.addNote {
+   float: none;
+ }
+.note__buttons {
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}

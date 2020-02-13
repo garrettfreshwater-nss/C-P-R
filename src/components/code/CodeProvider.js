@@ -7,7 +7,8 @@ import React, { useState, useEffect } from "react"
 export const CodeContext = React.createContext()
 
 export const CodeProvider = (props) => {
-    const [code, setCode] = useState([])
+    const [code, setCode] = useState([]) //code is state variable, setCode sets the state variable
+    
 
     const getCode = () => {
         return fetch("http://localhost:8088/code?_expand=codeType")

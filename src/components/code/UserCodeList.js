@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect, useRef } from "react"
 import { CodeContext } from "./CodeProvider";
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import Code from "./Code"
-import Note from "../notes/Note";
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
+// const [thing, setThing] = useState("")
 
 
 export default (props) => {
@@ -12,6 +12,7 @@ export default (props) => {
     const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
+    const codeSelectRef = useRef(0)
     
    
 
@@ -25,6 +26,11 @@ export default (props) => {
     activeUsersCode.map(a => {
         return codeArray.push(a)
     })
+
+    const filterCodeType = activeUsersCode.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
+    // array vs. state
+
+    console.log(filterCodeType)
 
     
 
@@ -44,10 +50,7 @@ export default (props) => {
     }, [code])
     
 
-    const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
-    // array vs. state
-
-    console.log(filterCodeType)
+    
 
     return (
         <>
@@ -55,9 +58,10 @@ export default (props) => {
             <h1>Your Code Snippets</h1>
 
             <select
-                value={ parseInt(codeObject.codeTypeId) }
+                // value={ parseInt(codeObject.codeTypeId) }
                 name="codeTypeId"
                 id="codeType"
+                ref={codeSelectRef}
                 className="form-control"
                 onChange={handleControlledInputChange}
                 >
@@ -72,15 +76,24 @@ export default (props) => {
             </select>
            
 
+{/* // you can do any type of conditional in a ternary */}
 
+        <div className="code__list"> 
 
-            <div className="code__list">
-                {
+            { codeSelectRef.current.value === "0" ? 
+            
+                (
+                    activeUsersCode.map(c => {
+                        return <Code key={c.id} code={c} {...props} />
+                    })
+                ):
+                (
                     filterCodeType.map(c => {
                         return <Code key={c.id} code={c} {...props} />
                     })
 
-                }
+                )
+            }
             </div>
         </div>
 

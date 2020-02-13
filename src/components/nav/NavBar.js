@@ -19,11 +19,11 @@ export default (props) => {
 
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
-         <Navbar.Brand href="/dashboard">Copy-Paste-Refactor</Navbar.Brand>
+         <Navbar.Brand href="/">Copy-Paste-Refactor</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                <Nav.Link href="/">Dashboard</Nav.Link>
                 <Nav.Link href="/add__code">Add Code</Nav.Link>
                 <NavDropdown title="Your Code" id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/my__code">All Code</NavDropdown.Item>

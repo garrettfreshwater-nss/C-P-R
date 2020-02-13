@@ -20,7 +20,7 @@ export default ({ note, history }) => {
     if(note.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
     
-    <div className="noteCard_buttons"> 
+    <div className="note__buttons"> 
         <button className="active__note" onClick={
             () => {
             history.push(`/note/edit/${note.id}`)
@@ -46,31 +46,16 @@ export default ({ note, history }) => {
     return(
 
             <section className="note__card">
-
                 <div className="note__text">{
-
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
-                           { }
+                            USERS NAME HERE
                             </Card.Header>
-                     
-                        <Card.Body>{ note.text }</Card.Body>
-                            
+                            <Card.Body>{ note.text }</Card.Body> 
                         </Card>
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                            { note.userId }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="1">
-                            <Card.Body>{ note.text }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
+                       
                     </Accordion>
-
-
                  }
                  </div>
 

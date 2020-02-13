@@ -21,12 +21,12 @@ return (
                 <CodeProvider>
 
                     <Route
-                        exact path="/dashboard" //this is a path created here, renders the form
+                        exact path="/" //this is a path created here, renders the form
                         render={props => <DashboardCodeList {...props} />}
                     />
 
                     <Route
-                        exact path="/dashboard" //this is a path created here, renders the form
+                        exact path="/my__code" //this is a path created here, renders the form
                         render={props => <UserCodeList {...props} />}
                     />
 

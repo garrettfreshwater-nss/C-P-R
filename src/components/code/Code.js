@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import "./Code.scss"
 import { CodeContext } from "./CodeProvider";
 import { PrismCode } from "./PrismComponent";
@@ -10,18 +10,19 @@ import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "./CurrentNoteComponent";
 
 
-// import { UserContext } from "../users/UserProvider";
+//! */ import { UserContext } from "../users/UserProvider";
  // const userWhoPosted = users.find(u => u.id === userId)
 
 
 
 
-export default ({ code, note, user, history }) => {
+export default ({ code, note, history }) => {
 
     
     
     const { deleteCode } = useContext(CodeContext)
     const { notes, addNote} = useContext(NoteContext)
+    
     // const { users } = useContext(UserContext)
 
   
@@ -36,7 +37,7 @@ export default ({ code, note, user, history }) => {
     
 
 
-    const activeUserCode = (code, note, history) => {
+    const activeUserCode = (code, history) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
@@ -66,7 +67,7 @@ export default ({ code, note, user, history }) => {
     }}
 
 
-    return(
+    return( 
 
             <section className="code__card">
 

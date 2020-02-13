@@ -49,7 +49,7 @@ export default props => {
                 text: codeObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
-                .then(() => props.history.push("/"))
+                .then(() => props.history.push("/my__code"))
         } else {
             addCode({
                 name: codeObject.name,
@@ -58,7 +58,7 @@ export default props => {
                 text: codeObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
-            .then(() => props.history.push("/"))
+            .then(() => props.history.push("/my__code"))
         }
     }
     
