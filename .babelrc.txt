@@ -1,7 +1,7 @@
 {
   "plugins": [
     ["prismjs", {
-      "languages": ["javascript", "css", "html"],
+      "languages": ["javascript", "css", "html","js","csharp","cs","dotnet","ruby", "tax", "jsx","json"],
       "plugins": ["line-numbers", "show-language"],
       "theme": "okaidia",
       "css": true

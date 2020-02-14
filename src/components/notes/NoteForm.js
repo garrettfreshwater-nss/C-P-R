@@ -27,7 +27,7 @@ export default props => {
     const setDefaults = () => {
         if (editMode) {
             const noteId = parseInt(props.match.params.noteId)
-            const selectedNote = notes.find(c => c.id === noteId) || {}
+            const selectedNote = notes.find(n=> n.id === noteId) || {}
             setNote(selectedNote)
             console.log(selectedNote)
         }
@@ -50,7 +50,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
             })
-                .then(() => props.history.push("/my__code"))
+                .then(() => props.history.push("/"))
         } else {
             addNote({
                 id: noteObject.id,
@@ -58,7 +58,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
             })
-            .then(() => props.history.push("/my__code"))
+            .then(() => props.history.push("/"))
         }
     }
 

@@ -1,7 +1,10 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import "./Code.scss"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Link }  from "react-router-dom";
 import { CodeContext } from "./CodeProvider";
-import { PrismCode } from "./PrismComponent";
+// import {PrismCode} from "./PrismComponent"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
@@ -66,27 +69,35 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
+  
+    
+    
+
+
+
 
     return( 
 
             <section className="code__card">
 
                 <div className="code__titleDiv">
-                    <h3 className="code__name">{ code.name }</h3>
+                    <h3 className="code__name">
+                    <Link to={`/my_code/${code.id}`} >
+                    { code.name } </Link></h3> 
                     <div className="code__codeType">{ code.codeType.type }</div>
                 </div>
 
-                <div className="code__codeSnippet">{  
+                <div>
+              
+                <SyntaxHighlighter
+                    language={ code.codeType.type}
+                    style={atomDark}
+                    showLineNumbers={true}
+                    >
+                    { code.codeSnippet }
+                 </SyntaxHighlighter>
 
-                <PrismCode
-                        code={ code.codeSnippet }
-                        language="react"
-                        plugins={["line-numbers"]}
-                    />
-                    
-                }
-
-
+            
                 </div>
 
                 <div className="code__text">{

@@ -2,7 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { CodeProvider } from "./code/CodeProvider";
 import CodeForm from "./code/CodeForm";
-import CodeList from "./code/CodeList";
+
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 import { NoteProvider } from "./notes/NoteProvider";
 import NoteForm from "./notes/NoteForm";
