@@ -44,6 +44,11 @@ return (
                         path="/code/edit/:codeId(\d+)"
                         render={props => <CodeForm {...props} />}
                     />
+
+                    <Route
+                        exact path="/note/edit/:noteId(\d+)" //this is a path created here, renders the form
+                        render={props => <NoteForm {...props} />}
+                    />
                     
                 </CodeProvider>
             </CodeTypeProvider>
