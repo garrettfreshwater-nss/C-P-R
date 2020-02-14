@@ -91,7 +91,7 @@ const Register = props => {
                     <input ref={verifyPassword} type="password"
                         name="verifyPassword"
                         className="form-control"
-                        placeholder="Verify password"
+                        placeholder="Password"
                         required />
                 </fieldset>
                 <fieldset>

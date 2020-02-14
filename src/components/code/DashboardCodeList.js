@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react"
+import React, { useContext, useState, useEffect, useRef } from "react"
 import { CodeContext } from "./CodeProvider";
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import Code from "./Code"
@@ -11,7 +11,9 @@ export default (props) => {
     const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
+    const dashboardCodeSelectRef = useRef(0)
     
+   
 
 
     const codeArray = []
@@ -43,20 +45,20 @@ export default (props) => {
     
 
     const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
+    // const dashboardCodeView = code || []
     // array vs. state
 
-    console.log(filterCodeType)
 
     return (
         <>
-        <div className="userCodeView">
-            <h1>Your Code Snippets</h1>
+        <div className="dashboardCodeView">
 
             <select
-                value={ parseInt(codeObject.codeTypeId) }
+                // value={ parseInt(codeObject.codeTypeId) }
                 name="codeTypeId"
                 id="codeType"
                 className="form-control"
+                ref={dashboardCodeSelectRef}
                 onChange={handleControlledInputChange}
                 >
             <option value="0">Select Language</option>
@@ -68,19 +70,25 @@ export default (props) => {
 
                         ))}
             </select>
-           
+        
+            <div className="code__list"> 
 
+                { dashboardCodeSelectRef.current.value === "0" ? 
 
+                    (
+                        code.map(c => {
+                            return <Code key={c.id} code={c} {...props} />
+                        })
+                    ):
+                    (
+                        filterCodeType.map(c => {
+                            return <Code key={c.id} code={c} {...props} />
+                        })
 
-            <div className="code__list">
-                {
-                    filterCodeType.map(c => {
-                        return <Code key={c.id} code={c} {...props} />
-                    })
-
+                    )
                 }
             </div>
-        </div>
+            </div>
 
             
         </>

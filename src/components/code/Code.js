@@ -1,7 +1,10 @@
 import React, { useContext } from "react"
 import "./Code.scss"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { Link }  from "react-router-dom";
 import { CodeContext } from "./CodeProvider";
-import { PrismCode } from "./PrismComponent";
+// import {PrismCode} from "./PrismComponent"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
@@ -10,44 +13,34 @@ import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "./CurrentNoteComponent";
 
 
-// import { UserContext } from "../users/UserProvider";
+//! */ import { UserContext } from "../users/UserProvider";
  // const userWhoPosted = users.find(u => u.id === userId)
 
 
 
 
-export default ({ code, note, user, history }) => {
+export default ({ code, note, history }) => {
 
     
     
-    const {deleteCode} = useContext(CodeContext)
-
-    const { notes, addNote, deleteNote} = useContext(NoteContext)
+    const { deleteCode } = useContext(CodeContext)
+    const { notes, addNote} = useContext(NoteContext)
+    
     // const { users } = useContext(UserContext)
 
   
    
     const currentCodesNotes= notes.filter(n => n.codeId === code.id)
-    console.log( currentCodesNotes, "notearray notes" )
+    console.log( currentCodesNotes, "noteArray notes" )
     // const mappedNotes = noteArray.map (sn => sn.codeId === code.id)
 
     // const newNotes = noteArray.filter(a => {
     //     return mappedNotes.push(a)
     // })
-    // const resultsNotes = mappedNotes.filter (fn => fn.)
     
 
 
-
-
-
- 
-    //  noteArray.map(note.id =>
-    //  console.log( noteArray ) 
-    //  )
-
-
-    const activeUserCode = (code, note, history) => {
+    const activeUserCode = (code, history) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
@@ -63,7 +56,7 @@ export default ({ code, note, user, history }) => {
 
         <button className="deleteButton" onClick={
             () => {
-                deleteNote(note)
+                deleteCode(code)
                 .then(() => {
                     history.push("/my__code")            
                 })
@@ -76,27 +69,35 @@ export default ({ code, note, user, history }) => {
         return("")
     }}
 
+  
+    
+    
 
-    return(
+
+
+
+    return( 
 
             <section className="code__card">
 
                 <div className="code__titleDiv">
-                    <h3 className="code__name">{ code.name }</h3>
+                    <h3 className="code__name">
+                    <Link to={`/my_code/${code.id}`} >
+                    { code.name } </Link></h3> 
                     <div className="code__codeType">{ code.codeType.type }</div>
                 </div>
 
-                <div className="code__codeSnippet">{  
+                <div>
+              
+                <SyntaxHighlighter
+                    language={ code.codeType.type}
+                    style={atomDark}
+                    showLineNumbers={true}
+                    >
+                    { code.codeSnippet }
+                 </SyntaxHighlighter>
 
-                <PrismCode
-                        code={ code.codeSnippet }
-                        language="react"
-                        plugins={["line-numbers"]}
-                    />
-                    
-                }
-
-
+            
                 </div>
 
                 <div className="code__text">{

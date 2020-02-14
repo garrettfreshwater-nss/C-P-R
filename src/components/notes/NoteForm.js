@@ -8,8 +8,7 @@ import { CodeContext } from "../code/CodeProvider";
 export default props => {
 
     const { addNote, updateNote, notes } = useContext(NoteContext)
-    const [ noteObject, setNote, codeObject ] = useState({})
-    const { code } = useContext(CodeContext)
+    const [ noteObject, setNote ] = useState({})
 
     const editMode = props.match.params.hasOwnProperty("noteId")
    
@@ -28,7 +27,7 @@ export default props => {
     const setDefaults = () => {
         if (editMode) {
             const noteId = parseInt(props.match.params.noteId)
-            const selectedNote = notes.find(c => c.id === noteId) || {}
+            const selectedNote = notes.find(n=> n.id === noteId) || {}
             setNote(selectedNote)
             console.log(selectedNote)
         }
@@ -39,8 +38,8 @@ export default props => {
     }, [notes])
 
     const constructNewNote = () => {
-       const currentCodeCardId = parseInt(props.match.params.codeId, 10) //how to get id through props
-    //    const foundCodeCard = code.find(c => c.id === currentCodeCardId)
+       const currentCodeCardId = parseInt(props.match.params.codeId, 10) 
+       //how to get id through props
 
        
 
@@ -59,7 +58,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
             })
-            .then(() => props.history.push("/dashboard"))
+            .then(() => props.history.push("/"))
         }
     }
 

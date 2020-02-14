@@ -23,7 +23,7 @@ export default (props) => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                <Nav.Link href="/dashboard">Dashboard</Nav.Link>
+                <Nav.Link href="/">Dashboard</Nav.Link>
                 <Nav.Link href="/add__code">Add Code</Nav.Link>
                 <NavDropdown title="Your Code" id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/my__code">All Code</NavDropdown.Item>
@@ -31,8 +31,8 @@ export default (props) => {
                     <NavDropdown.Item href="/my__code">React</NavDropdown.Item>
                     <NavDropdown.Item href="/my__code">C#</NavDropdown.Item>
                     <NavDropdown.Item href="/my__code">CSS</NavDropdown.Item>
-                    <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                    {/* <NavDropdown.Divider />
+                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>
                 </Nav>
 

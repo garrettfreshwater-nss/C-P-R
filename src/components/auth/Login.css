@@ -1,16 +1,10 @@
 h1 {
+    margin-top: 40px;
     font-size: 1.5rem;
-    /* color: slateblue; */
     background: transparent;
-    /* text-shadow: -1px -1px 1px rgb(255, 255, 255), 1px 1px 1px rgba(3, 0, 0, 0.897); */
 }
 
-/* fieldset {
-    min-width: 0;
-    padding: .07rem 0;
-    margin: 0;
-    border: 0;
-} */
+
 
 .form--login {
     display: inline-block;
@@ -24,9 +18,9 @@ h1 {
 }
 
 .label--login {
-    width: 3rem;
+    width: 4rem;
     display: inline-block;
-}
+} 
 
 
 .container--login {
@@ -39,8 +33,7 @@ h1 {
     width: 500px;
     height: 400px;
     margin: 5em auto;
-    background: rgba(202, 198, 198, 0.503);
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.448);
+
 
 }
 .link--register a {
@@ -54,8 +47,6 @@ h1 {
     width: 600px;
     height: 550px;
     margin: auto;
-    background: #EEECEC;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
 
-}
+} 
 
