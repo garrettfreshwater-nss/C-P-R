@@ -22,7 +22,7 @@
   justify-content: flex-start;
 
   .code__name {
-    margin: 5px auto;
+    margin: 15px auto;
   }
 
     .code__codeType {
@@ -68,7 +68,7 @@ button.deleteButton{
     justify-content: space;
     text-align: center;
     max-width: 550px;
-    background: rgba(128, 125, 125, 0.306);
+    background: rgba(128, 125, 125, 0.6);
     // border: .01em solid  rgba(187, 185, 185, 0.306);
     // -moz-box-shadow: 0px 0px 1px -20px rgba(0,0,0,1);
     // box-shadow: 0px 0px 1px -20px rgba(0,0,0,1);
@@ -76,13 +76,13 @@ button.deleteButton{
     }
 }
 
-.code__codeSnippet {
+.syntaxHighlightBlock {
     // background: white;
     // text-align: left;
     // contain: content;
     // overflow: hidden;
-    // padding: 1em;
-    // margin: 1em;
+    padding: .6em;
+    margin: 0em;
     // color: white !important;
     // background: rgb(21, 18, 39);
     // box-shadow: inset 0px 0px 6px rgba(0, 0, 0, 0.5);
@@ -98,7 +98,7 @@ select {
   padding: 1.5em;
   margin: 10px;
   width: auto;
-  background: rgba(255, 182, 182, 0.363);
+  background: rgba(247, 244, 244, 0.363);
 }
 
 html {

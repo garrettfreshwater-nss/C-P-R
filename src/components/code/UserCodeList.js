@@ -4,7 +4,6 @@ import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import Code from "./Code"
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
-// const [thing, setThing] = useState("")
 
 
 export default (props) => {

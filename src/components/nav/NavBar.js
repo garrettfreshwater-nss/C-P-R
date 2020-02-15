@@ -19,7 +19,7 @@ export default (props) => {
 
 <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
-         <Navbar.Brand href="/">Copy-Paste-Refactor</Navbar.Brand>
+         <Navbar.Brand href="/"><img className="logo" src={require ('./logo.svg')}/> CPR</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">

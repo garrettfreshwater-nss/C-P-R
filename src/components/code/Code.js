@@ -10,6 +10,7 @@ import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { NoteContext } from "../notes/NoteProvider";
+import { Note } from "../notes/Note"
 import CurrentNoteComponent from "./CurrentNoteComponent";
 
 
@@ -40,7 +41,7 @@ export default ({ code, note, history }) => {
     
 
 
-    const activeUserCode = (code, history) => {
+    const activeUserCode = (code) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
@@ -48,8 +49,7 @@ export default ({ code, note, history }) => {
     <div className="codeCard_buttons"> 
         <button className="active__code" onClick={
               () => {
-               history.push(`/code/edit/${code.id}`)
-               
+            history.push(`/code/edit/${code.id}`)
                 }}>Edit
         </button>
     
@@ -82,12 +82,11 @@ export default ({ code, note, history }) => {
 
                 <div className="code__titleDiv">
                     <h3 className="code__name">
-                    <Link to={`/my_code/${code.id}`} >
-                    { code.name } </Link></h3> 
+                    { code.name } </h3> 
                     <div className="code__codeType">{ code.codeType.type }</div>
                 </div>
 
-                <div>
+                <div className="syntaxHighlightBlock">
               
                 <SyntaxHighlighter
                     language={ code.codeType.type}
@@ -115,7 +114,7 @@ export default ({ code, note, history }) => {
                         </Card>
                     </Accordion>
 
-                 }  {activeUserCode(code, note, history)}
+                 }  {activeUserCode(code)}
 
 
                     <div className="users__note__text">
