@@ -82,8 +82,7 @@ export default ({ code, note, history }) => {
 
                 <div className="code__titleDiv">
                     <h3 className="code__name">
-                    <Link to={`/my_code/${code.id}`} >
-                    { code.name } </Link></h3> 
+                    { code.name } </h3> 
                     <div className="code__codeType">{ code.codeType.type }</div>
                 </div>
 
