@@ -29,7 +29,7 @@ export default (props) => {
             and change state instead of modifying current one
         */
         const newNote = Object.assign([], noteObject)
-        newNote[evt.target.name] = evt.target.value
+        newNote[evt.target.id] = evt.target.value
         console.log(newNote)
         setNote(newNote)
     }

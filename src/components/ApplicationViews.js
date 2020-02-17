@@ -21,22 +21,22 @@ return (
                 <CodeProvider>
 
                     <Route
-                        exact path="/" //this is a path created here, renders the form
+                        exact path="/" 
                         render={props => <DashboardCodeList {...props} />}
                     />
 
                     <Route
-                        exact path="/my__code" //this is a path created here, renders the form
+                        exact path="/my__code" 
                         render={props => <UserCodeList {...props} />}
                     />
 
                     <Route
-                        exact path="/add__note/:codeId(\d+)" //this is a path created here, renders the form
+                        exact path="/add__note/:codeId(\d+)" 
                         render={props => <NoteForm {...props} />}
                     />
 
                     <Route
-                        exact path="/add__code" //this is a path created here, renders the form
+                        exact path="/add__code" 
                         render={props => <CodeForm {...props} />}
                     />
                    

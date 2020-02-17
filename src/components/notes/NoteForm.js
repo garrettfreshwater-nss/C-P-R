@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react"
 import { NoteContext } from "./NoteProvider"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TextareaAutosize from 'react-autosize-textarea';
-import { CodeContext } from "../code/CodeProvider";
+
 
 
 export default props => {
@@ -26,6 +26,7 @@ export default props => {
 
     const setDefaults = () => {
         if (editMode) {
+            
             const noteId = parseInt(props.match.params.noteId)
             const selectedNote = notes.find(n=> n.id === noteId) || {}
             setNote(selectedNote)
@@ -41,14 +42,12 @@ export default props => {
        const currentCodeCardId = parseInt(props.match.params.codeId, 10) 
        //how to get id through props
 
-       
-
         if (editMode) {
             updateNote({
                 id: noteObject.id,
                 text: noteObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
-                codeId: currentCodeCardId
+                codeId: noteObject.codeId //must reference note object code ID since we have already added it with the addNote.
             })
                 .then(() => props.history.push("/"))
         } else {

@@ -2,19 +2,17 @@ import React, { useContext } from "react"
 import "./Code.scss"
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Link }  from "react-router-dom";
+// import { Link }  from "react-router-dom";
 import { CodeContext } from "./CodeProvider";
-// import {PrismCode} from "./PrismComponent"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { NoteContext } from "../notes/NoteProvider";
-import { Note } from "../notes/Note"
-import CurrentNoteComponent from "./CurrentNoteComponent";
+import CurrentNoteComponent from "../notes/CurrentNoteComponent";
 
 
-//! */ import { UserContext } from "../users/UserProvider";
+//  import { UserContext } from "../users/UserProvider";
  // const userWhoPosted = users.find(u => u.id === userId)
 
 
@@ -22,7 +20,6 @@ import CurrentNoteComponent from "./CurrentNoteComponent";
 
 export default ({ code, note, history }) => {
 
-    
     
     const { deleteCode } = useContext(CodeContext)
     const { notes, addNote} = useContext(NoteContext)
@@ -33,12 +30,6 @@ export default ({ code, note, history }) => {
    
     const currentCodesNotes= notes.filter(n => n.codeId === code.id)
     console.log( currentCodesNotes, "noteArray notes" )
-    // const mappedNotes = noteArray.map (sn => sn.codeId === code.id)
-
-    // const newNotes = noteArray.filter(a => {
-    //     return mappedNotes.push(a)
-    // })
-    
 
 
     const activeUserCode = (code) => {
@@ -69,7 +60,8 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
-  
+     
+   
     
     
 
@@ -127,19 +119,14 @@ export default ({ code, note, history }) => {
                         </button>
                     
                     {
-
                         currentCodesNotes.map (note => {
-                            return <CurrentNoteComponent {...history} key={note.id} note={note} />
+                            return <CurrentNoteComponent history={history} key={note.id} note={note} />
                         })
 
                         }
 
                         </div>
                  </div>
-
-                 
-                  
-
             </section>
 
     )

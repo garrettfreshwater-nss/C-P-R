@@ -30,14 +30,14 @@ export const NoteProvider = (props) => {
     }
  
     const deleteNote = note => {
-        return fetch(`http://localhost:8088/note/${note.id}`, {
+        return fetch(`http://localhost:8088/notes/${note.id}`, {
             method: "DELETE",
         })
             .then(getNote)
     }
 
     const updateNote = note => {
-        return fetch(`http://localhost:8088/note/${note.id}`, {
+        return fetch(`http://localhost:8088/notes/${note.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
