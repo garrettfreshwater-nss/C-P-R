@@ -39,17 +39,16 @@
 }
 
 
-button.deleteButton{
-  background-color: lightcoral;
+// button.deleteButton{
+//   background-color: lightcoral;
 
-}
+// }
 
 .codeCard_buttons {
   display: flex;
   flex-direction: row;
-  flex-basis: 20%;
-  justify-content: space-between;
-  margin: .5rem;
+  justify-content: space-evenly;
+  margin: 1rem;
 }
 
 .code__list {

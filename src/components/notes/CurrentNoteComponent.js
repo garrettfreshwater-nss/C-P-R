@@ -1,8 +1,9 @@
 import React, { useContext } from "react"
+import { NoteContext } from "./NoteProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
-import { NoteContext } from "./NoteProvider";
+import Button from 'react-bootstrap/Button';
 // import { NoteForm } from "../notes/NoteForm";
 
 
@@ -21,20 +22,20 @@ export default ({ note, history }) => {
     if(note.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
         <div className="note__buttons"> 
-            <button className="active__note" onClick={
+            <Button variant="info" className="active__note" onClick={
                 () => {
                 history.push(`/note/edit/${note.id}`)
                 }}>Edit
-            </button>
+            </Button>
         
-            <button className="deleteButton" onClick={
+            <Button variant="outline-danger" className="deleteButton" onClick={
                 () => {
                     deleteNote(note)
                     .then(() => {
                         history.push("/")            
                     })
                 }}>Delete
-            </button>
+            </Button>
         
         </div>
         

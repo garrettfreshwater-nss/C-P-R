@@ -16,6 +16,7 @@ export default (props) => (
                 return (
                     
                     <>
+                        {/* <Route render={props => <UserProfilePage {...props} />} /> */}
                         <Route render={props => <NavBar {...props} />} />
                         <Route render={props => <ApplicationViews {...props} />} />
                     </>

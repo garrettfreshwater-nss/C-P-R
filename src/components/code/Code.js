@@ -16,6 +16,24 @@ import CurrentNoteComponent from "../notes/CurrentNoteComponent";
  // const userWhoPosted = users.find(u => u.id === userId)
 
 
+ const options = [
+  { key: "df", text: 'No Highlight', value: 'text'},
+  { key: 'bash', text: 'Bash', value: 'bash' },
+  { key: 'c#', text: 'C#', value: 'csharp' },
+  { key: 'css', text: 'CSS', value: 'css' },
+  { key: 'django', text: 'Django', value: 'django' },
+  { key: 'elixir', text: 'Elixir', value: 'elixir' },
+  { key: 'erlang', text: 'Erlang', value: 'erlang' },
+  { key: 'html', text: 'HTML, XML', value: 'xml' },
+  { key: 'js', text: 'JavaScript', value: 'javascript' },
+  { key: 'jsx', text: 'JSX', value: 'jsx' },
+  { key: 'json', text: 'JSON', value: 'json' },
+  { key: 'md', text: 'MarkDown', value: 'markdown' },
+  { key: 'python', text: 'Python', value: 'python' },
+  { key: 'sql', text: 'SQL', value: 'sql' },
+  
+]
+
 
 
 export default ({ code, note, history }) => {
@@ -36,23 +54,23 @@ export default ({ code, note, history }) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
-    
+
     <div className="codeCard_buttons"> 
-        <button className="active__code" onClick={
+        <Button variant="info" className="active__code" onClick={
               () => {
             history.push(`/code/edit/${code.id}`)
                 }}>Edit
-        </button>
+        </Button>
     
 
-        <button className="deleteButton" onClick={
+        <Button variant="danger" className="deleteButton" onClick={
             () => {
                 deleteCode(code)
                 .then(() => {
                     history.push("/my__code")            
                 })
             }}>Delete
-        </button>
+        </Button>
     
     </div>
     
@@ -69,15 +87,17 @@ export default ({ code, note, history }) => {
 
 
     return( 
+        
 
             <section className="code__card">
-
+                
                 <div className="code__titleDiv">
+                
                     <h3 className="code__name">
-                    { code.name } </h3> 
+                    { code.name }</h3> 
                     <div className="code__codeType">{ code.codeType.type }</div>
+                    {activeUserCode(code)}
                 </div>
-
                 <div className="syntaxHighlightBlock">
               
                 <SyntaxHighlighter
@@ -106,17 +126,17 @@ export default ({ code, note, history }) => {
                         </Card>
                     </Accordion>
 
-                 }  {activeUserCode(code)}
+                 } 
 
 
                     <div className="users__note__text">
                     
-                        <button className="addNote" onClick={
+                        <Button variant="outline-dark" className="addNote" onClick={
                             () => {
                         addNote(note)
                             history.push(`/add__note/${code.id}`)
                             }}>Comment
-                        </button>
+                        </Button>
                     
                     {
                         currentCodesNotes.map (note => {
