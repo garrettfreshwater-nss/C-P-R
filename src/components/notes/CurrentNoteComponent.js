@@ -22,13 +22,13 @@ export default ({ note, history }) => {
     if(note.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
         <div className="note__buttons"> 
-            <Button variant="info" className="active__note" onClick={
+            <Button variant="info" size="sm" className="active__note" onClick={
                 () => {
                 history.push(`/note/edit/${note.id}`)
                 }}>Edit
             </Button>
         
-            <Button variant="outline-danger" className="deleteButton" onClick={
+            <Button variant="outline-danger" size="sm" className="deleteButton" onClick={
                 () => {
                     deleteNote(note)
                     .then(() => {
@@ -51,7 +51,7 @@ export default ({ note, history }) => {
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
-                            USERS NAME HERE
+                            USERS NAME HERE {activeUserNote(note)}
                             </Card.Header>
                             <Card.Body>{ note.text }</Card.Body> 
                         </Card>
@@ -59,10 +59,6 @@ export default ({ note, history }) => {
                     </Accordion>
                  }
                  </div>
-
-                
-
-                {activeUserNote(note)}
 
             </section>
 

@@ -56,14 +56,14 @@ export default ({ code, note, history }) => {
     return (
 
     <div className="codeCard_buttons"> 
-        <Button variant="info" className="active__code" onClick={
+        <Button variant="info" size="sm" className="active__code" onClick={
               () => {
             history.push(`/code/edit/${code.id}`)
                 }}>Edit
         </Button>
     
 
-        <Button variant="danger" className="deleteButton" onClick={
+        <Button variant="danger" size="sm" className="deleteButton" onClick={
             () => {
                 deleteCode(code)
                 .then(() => {
@@ -78,13 +78,6 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
-     
-   
-    
-    
-
-
-
 
     return( 
         
@@ -92,46 +85,40 @@ export default ({ code, note, history }) => {
             <section className="code__card">
                 
                 <div className="code__titleDiv">
-                
-                    <h3 className="code__name">
-                    { code.name }</h3> 
-                    <div className="code__codeType">{ code.codeType.type }</div>
-                    {activeUserCode(code)}
+                    
+                        <h3 className="code__name">{ code.name }</h3> 
+                        <div className="code__codeType">{ code.codeType.type }</div>
+                        <div className="code__cardButtons">{ activeUserCode(code) }</div>
+                       
                 </div>
-                <div className="syntaxHighlightBlock">
-              
-                <SyntaxHighlighter
-                    language={ code.codeType.type}
-                    style={atomDark}
-                    showLineNumbers={true}
-                    >
-                    { code.codeSnippet }
-                 </SyntaxHighlighter>
 
-            
+                <div className="syntaxHighlightBlock">
+                    <SyntaxHighlighter
+                        language={ code.codeType.type}
+                        style={atomDark}
+                        showLineNumbers={true}
+                        >
+                        { code.codeSnippet }
+                    </SyntaxHighlighter>
                 </div>
 
                 <div className="code__text">{
-
-                    <Accordion defaultActiveKey="0">
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                { code.name }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
+                  
+                    <Card>
+                  
+                            
                         <Card.Body>{ code.text }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                    </Accordion>
+                       
+                    
+                    </Card>
 
                  } 
 
+                 </div>
 
-                    <div className="users__note__text">
+                 <div className="users__note__text">
                     
-                        <Button variant="outline-dark" className="addNote" onClick={
+                        <Button variant="dark" size="sm" className="addNote" onClick={
                             () => {
                         addNote(note)
                             history.push(`/add__note/${code.id}`)
@@ -146,7 +133,6 @@ export default ({ code, note, history }) => {
                         }
 
                         </div>
-                 </div>
             </section>
 
     )

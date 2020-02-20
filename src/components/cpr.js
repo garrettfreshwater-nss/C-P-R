@@ -6,10 +6,15 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import "./cpr.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
+import { CodeProvider } from "./code/CodeProvider";
 
 
 export default (props) => (
     <>
+    <CodeTypeProvider>
+        <CodeProvider>
+
     
         <Route render={() => {
             if (localStorage.getItem("cpr__user")) {
@@ -28,6 +33,9 @@ export default (props) => (
 
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/register" render={props => <Register {...props} />} />
+        
+            </CodeProvider>
+        </CodeTypeProvider>
     </>
 
     

@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react"
 import { NoteContext } from "./NoteProvider"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TextareaAutosize from 'react-autosize-textarea';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -85,12 +87,12 @@ export default props => {
                 </div>
             </fieldset>
 
-            <button type="submit" onClick={evt => 
+            <Button variant="dark" size="lg" type="submit" onClick={evt => 
                     {evt.preventDefault() 
                     constructNewNote()
                     }}
                 className="btn btn-primary"> {editMode ? "Update": "Add"} 
-            </button>
+            </Button>
 
         </form>
     </div>

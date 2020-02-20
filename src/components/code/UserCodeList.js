@@ -54,26 +54,28 @@ export default (props) => {
     return (
         <>
         <div className="userCodeView">
+            <div className="topofPage">
+
             <h1>Your Code Snippets</h1>
+                <select
+                    // value={ parseInt(codeObject.codeTypeId) }
+                    name="codeTypeId"
+                    id="codeType"
+                    ref={codeSelectRef}
+                    className="form-control"
+                    onChange={handleControlledInputChange}
+                    >
+                <option value="0">Select Language</option>
+                {codeTypes.map(c => (
+                    <option key={c.id} value={c.id}>
+                        {c.type}
+                    </option>
 
-            <select
-                // value={ parseInt(codeObject.codeTypeId) }
-                name="codeTypeId"
-                id="codeType"
-                ref={codeSelectRef}
-                className="form-control"
-                onChange={handleControlledInputChange}
-                >
-            <option value="0">Select Language</option>
-            {codeTypes.map(c => (
-                <option key={c.id} value={c.id}>
-                    {c.type}
-                </option>
 
-
-                        ))}
-            </select>
-           
+                            ))}
+                </select>
+            
+            </div>
 
 {/* // you can do any type of conditional in a ternary */}
 

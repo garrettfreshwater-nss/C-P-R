@@ -4,6 +4,7 @@ import "./Code.scss"
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TextareaAutosize from 'react-autosize-textarea';
+import Button from 'react-bootstrap/Button';
 
 
 export default props => {
@@ -144,12 +145,12 @@ export default props => {
                 </div>
             </fieldset>
 
-            <button type="submit" onClick={evt => 
+            <Button variant="info" type="submit" onClick={evt => 
                     {evt.preventDefault() 
                     constructNewCode()
                     }}
                 className="btn btn-primary"> {editMode ? "Update": "Add"} 
-            </button>
+            </Button>
 
         </form>
     </div>

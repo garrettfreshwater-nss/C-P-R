@@ -2,7 +2,6 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { CodeProvider } from "./code/CodeProvider";
 import CodeForm from "./code/CodeForm";
-
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 import { NoteProvider } from "./notes/NoteProvider";
 import NoteForm from "./notes/NoteForm";
@@ -12,13 +11,14 @@ import UserCodeList from "./code/UserCodeList";
 
 
 
+
 export default (props) => {
 return (
         <>
-
         <NoteProvider>
             <CodeTypeProvider>
                 <CodeProvider>
+               
 
                     <Route
                         exact path="/" 
@@ -49,10 +49,11 @@ return (
                         exact path="/note/edit/:noteId(\d+)" //this is a path created here, renders the form
                         render={props => <NoteForm {...props} />}
                     />
-                    
+                   
                 </CodeProvider>
             </CodeTypeProvider>
         </NoteProvider>
+
 
         </>
     )
