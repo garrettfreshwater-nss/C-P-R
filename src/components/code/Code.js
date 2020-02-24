@@ -5,16 +5,30 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 // import { Link }  from "react-router-dom";
 import { CodeContext } from "./CodeProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Accordion from 'react-bootstrap/Accordion';
+import copy from "copy-to-clipboard";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "../notes/CurrentNoteComponent";
 
 
-//  import { UserContext } from "../users/UserProvider";
- // const userWhoPosted = users.find(u => u.id === userId)
-
+ const options = [
+  { key: "df", text: 'No Highlight', value: 'text'},
+  { key: 'bash', text: 'Bash', value: 'bash' },
+  { key: 'c#', text: 'C#', value: 'csharp' },
+  { key: 'css', text: 'CSS', value: 'css' },
+  { key: 'django', text: 'Django', value: 'django' },
+  { key: 'elixir', text: 'Elixir', value: 'elixir' },
+  { key: 'erlang', text: 'Erlang', value: 'erlang' },
+  { key: 'html', text: 'HTML, XML', value: 'xml' },
+  { key: 'js', text: 'JavaScript', value: 'javascript' },
+  { key: 'jsx', text: 'JSX', value: 'jsx' },
+  { key: 'json', text: 'JSON', value: 'json' },
+  { key: 'md', text: 'MarkDown', value: 'markdown' },
+  { key: 'python', text: 'Python', value: 'python' },
+  { key: 'sql', text: 'SQL', value: 'sql' },
+  
+]
 
 
 
@@ -24,7 +38,6 @@ export default ({ code, note, history }) => {
     const { deleteCode } = useContext(CodeContext)
     const { notes, addNote} = useContext(NoteContext)
     
-    // const { users } = useContext(UserContext)
 
   
    
@@ -36,23 +49,23 @@ export default ({ code, note, history }) => {
         
     if(code.userId === parseInt(localStorage.getItem("cpr__user"), 10)){
     return (
-    
+
     <div className="codeCard_buttons"> 
-        <button className="active__code" onClick={
+        <Button variant="primary" size="sm" className="active__code" onClick={
               () => {
             history.push(`/code/edit/${code.id}`)
                 }}>Edit
-        </button>
+        </Button>
     
 
-        <button className="deleteButton" onClick={
+        <Button variant="danger" size="sm" className="deleteButton" onClick={
             () => {
                 deleteCode(code)
                 .then(() => {
                     history.push("/my__code")            
                 })
             }}>Delete
-        </button>
+        </Button>
     
     </div>
     
@@ -60,63 +73,63 @@ export default ({ code, note, history }) => {
         return("")
     }}
 
-     
-   
-    
-    
-
-
-
 
     return( 
+        
 
             <section className="code__card">
-
+                
                 <div className="code__titleDiv">
-                    <h3 className="code__name">
-                    { code.name } </h3> 
-                    <div className="code__codeType">{ code.codeType.type }</div>
+
+                        <div className="user__name">{ code.user.name }</div>
+                        <h3 className="code__name">{ code.name }</h3> 
+                        <div className="code__codeType">{ code.codeType.type }</div>
+                        <div className="code__cardButtons">{ activeUserCode(code) }</div>
+                       
                 </div>
 
                 <div className="syntaxHighlightBlock">
-              
-                <SyntaxHighlighter
-                    language={ code.codeType.type}
-                    style={atomDark}
-                    showLineNumbers={true}
-                    >
-                    { code.codeSnippet }
-                 </SyntaxHighlighter>
+                    <SyntaxHighlighter
+                        language={ code.codeType.type}
+                        style={atomDark}
+                        showLineNumbers={true}
+                        >
+                        { code.codeSnippet }
+                    </SyntaxHighlighter>
 
-            
+                    <Button
+                        className="copy_code"
+                      variant="dark"
+                      size="small" 
+                      block
+                      onClick={() => copy(code.codeSnippet)}
+                      style={{
+                        fontSize: "1.5em"
+                      }}
+                    >
+                        Copy Code
+                    </Button>
                 </div>
 
                 <div className="code__text">{
-
-                    <Accordion defaultActiveKey="0">
-                        <Card>
-                            <Card.Header>
-                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                { code.name }
-                            </Accordion.Toggle>
-                            </Card.Header>
-                            <Accordion.Collapse eventKey="0">
-                        <Card.Body>{ code.text }</Card.Body>
-                            </Accordion.Collapse>
-                        </Card>
-                    </Accordion>
-
-                 }  {activeUserCode(code)}
-
-
-                    <div className="users__note__text">
+                  
+                    <Card>
                     
-                        <button className="addNote" onClick={
+                        <Card.Body>{ code.text }</Card.Body>
+                       
+                    </Card>
+
+                 } 
+
+                 </div>
+
+                 <div className="users__note__text">
+                    
+                        <Button variant="dark" size="sm" className="addNote" onClick={
                             () => {
-                        addNote(note)
                             history.push(`/add__note/${code.id}`)
                             }}>Comment
-                        </button>
+                        </Button>
                     
                     {
                         currentCodesNotes.map (note => {
@@ -126,7 +139,6 @@ export default ({ code, note, history }) => {
                         }
 
                         </div>
-                 </div>
             </section>
 
     )

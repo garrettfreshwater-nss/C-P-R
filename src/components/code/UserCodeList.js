@@ -9,27 +9,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default (props) => {
 
     const { codeTypes } = useContext(CodeTypeContext)
-    const [ codeObject, setCode ] = useState({})
+    const [ codeObject, setCode ] = useState({codeTypeId:0})
     const { code } = useContext(CodeContext)
     const codeSelectRef = useRef(0)
     
    
 
 
-    const codeArray = []
-
     const activeUsersCode = code.filter(a => {
         return a.userId === parseInt(localStorage.getItem("cpr__user"), 10)
-    })
+    }) || []
 
-    activeUsersCode.map(a => {
-        return codeArray.push(a)
-    })
+    
 
     const filterCodeType = activeUsersCode.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
     // array vs. state
-
-    console.log(filterCodeType)
 
     
 
@@ -38,48 +32,51 @@ export default (props) => {
             When changing a state object or array, always create a new one
             and change state instead of modifying current one
         */
-        const newCode = Object.assign([], codeObject)
+        const newCode = Object.assign({}, codeObject)
         newCode[evt.target.name] = evt.target.value
         console.log(newCode)
         setCode(newCode)
     }
 
-
     useEffect(() => {
     }, [code])
     
-
+console.log(codeObject.codeTypeId, "new object")
     
 
     return (
+        
         <>
-        <div className="userCodeView">
-            <h1>Your Code Snippets</h1>
-
+        <div className="userView">
+            <div className="topOfPage">
             <select
-                // value={ parseInt(codeObject.codeTypeId) }
-                name="codeTypeId"
-                id="codeType"
-                ref={codeSelectRef}
-                className="form-control"
-                onChange={handleControlledInputChange}
-                >
-            <option value="0">Select Language</option>
-            {codeTypes.map(c => (
-                <option key={c.id} value={c.id}>
-                    {c.type}
-                </option>
+                    name="codeTypeId"
+                    id="codeType"
+                    value={codeObject.codeTypeId}
+                    className="form-control"
+                    onChange={handleControlledInputChange}
+                    >
+                <option value="0">Select Language</option>
+                {codeTypes.map(c => (
+                    <option key={c.id} value={c.id}>
+                        {c.type}
+                    </option>
 
 
-                        ))}
-            </select>
-           
+                            ))}
+                </select>
+                <h1>YOUR SNIPPETS</h1>
+            </div>
+            
+            </div>
 
 {/* // you can do any type of conditional in a ternary */}
 
+    <div className="userCodeView">
+    
         <div className="code__list"> 
 
-            { codeSelectRef.current.value === "0" ? 
+            { codeObject.codeTypeId === 0 ? 
             
                 (
                     activeUsersCode.map(c => {

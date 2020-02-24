@@ -11,7 +11,7 @@ export const CodeProvider = (props) => {
     
 
     const getCode = () => {
-        return fetch("http://localhost:8088/code?_expand=codeType")
+        return fetch("http://localhost:8088/code?_expand=codeType&_expand=user")
             .then(res => res.json())
             .then(setCode)
     }

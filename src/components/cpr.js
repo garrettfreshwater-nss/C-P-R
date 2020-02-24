@@ -6,16 +6,24 @@ import Login from "./auth/Login"
 import Register from "./auth/Register"
 import "./cpr.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
+import { CodeProvider } from "./code/CodeProvider";
+import { NoteProvider } from "./notes/NoteProvider";
 
 
 export default (props) => (
     <>
+    <CodeTypeProvider>
+        <CodeProvider>
+            <NoteProvider>
+
     
         <Route render={() => {
             if (localStorage.getItem("cpr__user")) {
                 return (
                     
                     <>
+                        {/* <Route render={props => <UserProfilePage {...props} />} /> */}
                         <Route render={props => <NavBar {...props} />} />
                         <Route render={props => <ApplicationViews {...props} />} />
                     </>
@@ -27,6 +35,10 @@ export default (props) => (
 
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/register" render={props => <Register {...props} />} />
+        
+                </NoteProvider>
+            </CodeProvider>
+        </CodeTypeProvider>
     </>
 
     

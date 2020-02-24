@@ -2,6 +2,8 @@ import React, { useContext, useState, useEffect } from "react"
 import { NoteContext } from "./NoteProvider"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import TextareaAutosize from 'react-autosize-textarea';
+import Button from 'react-bootstrap/Button';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -19,7 +21,7 @@ export default props => {
             and change state instead of modifying current one
         */
         const newNote = Object.assign({}, noteObject)
-        newNote[evt.target.id] = evt.target.value
+        newNote[evt.target.name] = evt.target.value
         console.log(newNote)
         setNote(newNote)
     }
@@ -52,7 +54,6 @@ export default props => {
                 .then(() => props.history.push("/"))
         } else {
             addNote({
-                id: noteObject.id,
                 text: noteObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
@@ -60,8 +61,6 @@ export default props => {
             .then(() => props.history.push("/"))
         }
     }
-
-    console.log(noteObject.codeId)
 
     return (
 
@@ -76,6 +75,7 @@ export default props => {
                     <TextareaAutosize
                         type="text"
                         id="text"
+                        name="text"
                         defaultValue={noteObject.text}
                         required
                         className="form-control"
@@ -85,12 +85,12 @@ export default props => {
                 </div>
             </fieldset>
 
-            <button type="submit" onClick={evt => 
+            <Button variant="dark" size="lg" type="submit" onClick={evt => 
                     {evt.preventDefault() 
                     constructNewNote()
                     }}
                 className="btn btn-primary"> {editMode ? "Update": "Add"} 
-            </button>
+            </Button>
 
         </form>
     </div>

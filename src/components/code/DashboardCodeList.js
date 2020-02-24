@@ -9,9 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default (props) => {
 
     const { codeTypes } = useContext(CodeTypeContext)
-    const [ codeObject, setCode ] = useState({})
+    const [ codeObject, setCode ] = useState({codeTypeId:0})
     const { code } = useContext(CodeContext)
-    const dashboardCodeSelectRef = useRef(0)
     
    
 
@@ -58,7 +57,7 @@ export default (props) => {
                 name="codeTypeId"
                 id="codeType"
                 className="form-control"
-                ref={dashboardCodeSelectRef}
+                value={codeObject.codeTypeId}
                 onChange={handleControlledInputChange}
                 >
             <option value="0">Select Language</option>
@@ -73,7 +72,7 @@ export default (props) => {
         
             <div className="code__list"> 
 
-                { dashboardCodeSelectRef.current.value === "0" ? 
+                { codeObject.codeTypeId === 0 ? 
 
                     (
                         code.map(c => {

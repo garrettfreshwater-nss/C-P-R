@@ -63,14 +63,6 @@ const Register = props => {
                         required autoFocus />
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="lastName"> Last Name </label>
-                    <input ref={lastName} type="text"
-                        name="lastName"
-                        className="form-control"
-                        placeholder="Last name"
-                        required />
-                </fieldset>
-                <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
                     <input ref={email} type="email"
                         name="email"
