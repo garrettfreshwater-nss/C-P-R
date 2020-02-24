@@ -53,13 +53,9 @@ export default (props) => {
 
     return (
         <>
-        <div className="userCodeView">
-            <div className="topofPage">
-
-            <h1>Your Code Snippets</h1>
-            </div>
+        <div className="usercodeView">
+            <div className="topOfPage">
             <select
-                    // value={ parseInt(codeObject.codeTypeId) }
                     name="codeTypeId"
                     id="codeType"
                     ref={codeSelectRef}
@@ -75,6 +71,9 @@ export default (props) => {
 
                             ))}
                 </select>
+                <h1>Your Code Snippets</h1>
+            </div>
+            
             </div>
 
 {/* // you can do any type of conditional in a ternary */}

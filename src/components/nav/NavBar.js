@@ -71,37 +71,7 @@ export default (props) => {
                 <Nav className="mr-auto">
                 <Nav.Link href="/">Dashboard</Nav.Link>
                 <Nav.Link href="/add__code">Add Code</Nav.Link>
-                <NavDropdown title="Your Code" id="collasible-nav-dropdown">
-                    <NavDropdown.Item href="/my__code">All Code</NavDropdown.Item>
-                    <NavDropdown.Item href="/my__code">Javascript</NavDropdown.Item>
-                    <NavDropdown.Item href="/my__code">React</NavDropdown.Item>
-                    <NavDropdown.Item href="/my__code">C#</NavDropdown.Item>
-                    <NavDropdown.Item href="/my__code">CSS</NavDropdown.Item>
-                    {/* <NavDropdown.Divider />
-                    <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
-                </NavDropdown>
-                <div className="dashboardCodeView">
-
-            {/* <select
-                // value={ parseInt(codeObject.codeTypeId) }
-                name="codeTypeId"
-                id="codeType"
-                className="form-control"
-                ref={dashboardCodeSelectRef}
-                onChange={handleControlledInputChange}
-                >
-            <option value="0">Select Language</option>
-            {codeTypes.map(c => (
-                <option key={c.id} value={c.id}>
-                    {c.type}
-                </option>
-
-
-                        ))}
-            </select> */}
-        
-            
-            </div>
+                <Nav.Link href="/my__code">Your Code</Nav.Link>
                 </Nav>
                 
                 <Nav>

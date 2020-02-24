@@ -5,9 +5,13 @@ import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 // import { Link }  from "react-router-dom";
 import { CodeContext } from "./CodeProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Accordion from 'react-bootstrap/Accordion';
+import copy from "copy-to-clipboard";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
+import Popover from 'react-bootstrap/Popover'
+import PopoverTitle from 'react-bootstrap/PopoverTitle'
+import Overlay from 'react-bootstrap/Overlay'
 import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "../notes/CurrentNoteComponent";
 
@@ -100,16 +104,27 @@ export default ({ code, note, history }) => {
                         >
                         { code.codeSnippet }
                     </SyntaxHighlighter>
+
+                    <Button
+                        className="copy_code"
+                      variant="dark"
+                      size="small" 
+                      block
+                      onClick={() => copy(code.codeSnippet)}
+                      style={{
+                        fontSize: "1.5em"
+                      }}
+                    >
+                        Copy Code
+                    </Button>
                 </div>
 
                 <div className="code__text">{
                   
                     <Card>
-                  
-                            
+                    
                         <Card.Body>{ code.text }</Card.Body>
                        
-                    
                     </Card>
 
                  } 
