@@ -127,7 +127,6 @@ export default ({ code, note, history }) => {
                     
                         <Button variant="dark" size="sm" className="addNote" onClick={
                             () => {
-                        addNote(note)
                             history.push(`/add__note/${code.id}`)
                             }}>Comment
                         </Button>

@@ -9,27 +9,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default (props) => {
 
     const { codeTypes } = useContext(CodeTypeContext)
-    const [ codeObject, setCode ] = useState({})
+    const [ codeObject, setCode ] = useState({codeTypeId:0})
     const { code } = useContext(CodeContext)
     const codeSelectRef = useRef(0)
     
    
 
 
-    // const codeArray = []
-
     const activeUsersCode = code.filter(a => {
         return a.userId === parseInt(localStorage.getItem("cpr__user"), 10)
-    })
+    }) || []
 
-    // activeUsersCode.map(a => {
-    //     return codeArray.push(a)
-    // })
+    
 
     const filterCodeType = activeUsersCode.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
     // array vs. state
-
-    console.log(filterCodeType)
 
     
 
@@ -38,28 +32,27 @@ export default (props) => {
             When changing a state object or array, always create a new one
             and change state instead of modifying current one
         */
-        const newCode = Object.assign([], codeObject)
+        const newCode = Object.assign({}, codeObject)
         newCode[evt.target.name] = evt.target.value
         console.log(newCode)
         setCode(newCode)
     }
-    console.log("words here",codeSelectRef.current.value)
 
     useEffect(() => {
     }, [code])
     
-
+console.log(codeObject.codeTypeId, "new object")
     
 
     return (
         
         <>
-        <div className="usercodeView">
+        <div className="userView">
             <div className="topOfPage">
             <select
                     name="codeTypeId"
                     id="codeType"
-                    ref={codeSelectRef}
+                    value={codeObject.codeTypeId}
                     className="form-control"
                     onChange={handleControlledInputChange}
                     >
@@ -83,7 +76,7 @@ export default (props) => {
     
         <div className="code__list"> 
 
-            { codeSelectRef.current.value === "0" ? 
+            { codeObject.codeTypeId === 0 ? 
             
                 (
                     activeUsersCode.map(c => {
