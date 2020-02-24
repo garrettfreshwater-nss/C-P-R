@@ -8,12 +8,14 @@ import "./cpr.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 import { CodeProvider } from "./code/CodeProvider";
+import { NoteProvider } from "./notes/NoteProvider";
 
 
 export default (props) => (
     <>
     <CodeTypeProvider>
         <CodeProvider>
+            <NoteProvider>
 
     
         <Route render={() => {
@@ -34,6 +36,7 @@ export default (props) => (
         <Route path="/login" render={props => <Login {...props} />} />
         <Route path="/register" render={props => <Register {...props} />} />
         
+                </NoteProvider>
             </CodeProvider>
         </CodeTypeProvider>
     </>

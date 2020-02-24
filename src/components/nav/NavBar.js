@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Toggle from 'buildo-react-components/lib/Toggle';
 import { CodeContext, CodeProvider } from "../code/CodeProvider";
 import { CodeTypeContext, CodeTypeProvider } from "../codeType/CodeTypeProvider";
+import Code from "../code/Code";
+import { NoteProvider } from "../notes/NoteProvider";
 
 
 
@@ -59,6 +61,7 @@ export default (props) => {
         
 <>
 <CodeTypeProvider>
+<NoteProvider>
 <CodeProvider>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
 
@@ -77,8 +80,9 @@ export default (props) => {
                     {/* <NavDropdown.Divider />
                     <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                 </NavDropdown>
-                </Nav>
-                <select
+                <div className="dashboardCodeView">
+
+            {/* <select
                 // value={ parseInt(codeObject.codeTypeId) }
                 name="codeTypeId"
                 id="codeType"
@@ -86,13 +90,20 @@ export default (props) => {
                 ref={dashboardCodeSelectRef}
                 onChange={handleControlledInputChange}
                 >
-                <option value="0">Select Language</option>
-                {codeTypes.map(c => (
-                    <option key={c.id} value={c.id}>
-                        {c.type}
-                    </option>
-                            ))}
-                </select>
+            <option value="0">Select Language</option>
+            {codeTypes.map(c => (
+                <option key={c.id} value={c.id}>
+                    {c.type}
+                </option>
+
+
+                        ))}
+            </select> */}
+        
+            
+            </div>
+                </Nav>
+                
                 <Nav>
 
 
@@ -124,6 +135,7 @@ export default (props) => {
             </Navbar.Collapse>
         </Navbar>
         </CodeProvider>
+        </NoteProvider>
         </CodeTypeProvider> 
         </>
 

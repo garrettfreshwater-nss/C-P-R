@@ -57,7 +57,8 @@ export default (props) => {
             <div className="topofPage">
 
             <h1>Your Code Snippets</h1>
-                <select
+            </div>
+            <select
                     // value={ parseInt(codeObject.codeTypeId) }
                     name="codeTypeId"
                     id="codeType"
@@ -74,11 +75,10 @@ export default (props) => {
 
                             ))}
                 </select>
-            
             </div>
 
 {/* // you can do any type of conditional in a ternary */}
-
+    <div className="userCodeView">
         <div className="code__list"> 
 
             { codeSelectRef.current.value === "0" ? 
