@@ -8,16 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import copy from "copy-to-clipboard";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger'
-import Popover from 'react-bootstrap/Popover'
-import PopoverTitle from 'react-bootstrap/PopoverTitle'
-import Overlay from 'react-bootstrap/Overlay'
 import { NoteContext } from "../notes/NoteProvider";
 import CurrentNoteComponent from "../notes/CurrentNoteComponent";
-
-
-//  import { UserContext } from "../users/UserProvider";
- // const userWhoPosted = users.find(u => u.id === userId)
 
 
  const options = [
@@ -46,7 +38,6 @@ export default ({ code, note, history }) => {
     const { deleteCode } = useContext(CodeContext)
     const { notes, addNote} = useContext(NoteContext)
     
-    // const { users } = useContext(UserContext)
 
   
    
@@ -60,7 +51,7 @@ export default ({ code, note, history }) => {
     return (
 
     <div className="codeCard_buttons"> 
-        <Button variant="info" size="sm" className="active__code" onClick={
+        <Button variant="primary" size="sm" className="active__code" onClick={
               () => {
             history.push(`/code/edit/${code.id}`)
                 }}>Edit
@@ -89,7 +80,8 @@ export default ({ code, note, history }) => {
             <section className="code__card">
                 
                 <div className="code__titleDiv">
-                    
+
+                        <div className="user__name">{ code.user.name }</div>
                         <h3 className="code__name">{ code.name }</h3> 
                         <div className="code__codeType">{ code.codeType.type }</div>
                         <div className="code__cardButtons">{ activeUserCode(code) }</div>

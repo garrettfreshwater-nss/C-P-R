@@ -16,15 +16,15 @@ export default (props) => {
    
 
 
-    const codeArray = []
+    // const codeArray = []
 
     const activeUsersCode = code.filter(a => {
         return a.userId === parseInt(localStorage.getItem("cpr__user"), 10)
     })
 
-    activeUsersCode.map(a => {
-        return codeArray.push(a)
-    })
+    // activeUsersCode.map(a => {
+    //     return codeArray.push(a)
+    // })
 
     const filterCodeType = activeUsersCode.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
     // array vs. state
@@ -43,7 +43,7 @@ export default (props) => {
         console.log(newCode)
         setCode(newCode)
     }
-
+    console.log("words here",codeSelectRef.current.value)
 
     useEffect(() => {
     }, [code])
@@ -52,6 +52,7 @@ export default (props) => {
     
 
     return (
+        
         <>
         <div className="usercodeView">
             <div className="topOfPage">
@@ -71,13 +72,15 @@ export default (props) => {
 
                             ))}
                 </select>
-                <h1>Your Code Snippets</h1>
+                <h1>YOUR SNIPPETS</h1>
             </div>
             
             </div>
 
 {/* // you can do any type of conditional in a ternary */}
+
     <div className="userCodeView">
+    
         <div className="code__list"> 
 
             { codeSelectRef.current.value === "0" ? 

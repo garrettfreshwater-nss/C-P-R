@@ -5,7 +5,6 @@ import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Toggle from 'buildo-react-components/lib/Toggle';
 import { CodeContext, CodeProvider } from "../code/CodeProvider";
 import { CodeTypeContext, CodeTypeProvider } from "../codeType/CodeTypeProvider";
 import Code from "../code/Code";

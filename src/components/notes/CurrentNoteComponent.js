@@ -12,8 +12,6 @@ import Button from 'react-bootstrap/Button';
 
 
 export default ({ note, history }) => {
-
-
     
     const {deleteNote} = useContext(NoteContext)
     
@@ -51,9 +49,10 @@ export default ({ note, history }) => {
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
-                            USERS NAME HERE {activeUserNote(note)}
+                                { note.user.name }
                             </Card.Header>
                             <Card.Body>{ note.text }</Card.Body> 
+                                {activeUserNote(note)}
                         </Card>
                        
                     </Accordion>

@@ -13,7 +13,7 @@ export const NoteProvider = (props) => {
     const [notes, setNote] = useState([])
 
     const getNote = () => {
-        return fetch("http://localhost:8088/notes?_expand=codeId") // fix fetch
+        return fetch("http://localhost:8088/notes?_expand=user") // fix fetch
             .then(res => res.json())
             .then(setNote)
     }

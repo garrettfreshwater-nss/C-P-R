@@ -21,7 +21,7 @@ export default props => {
             and change state instead of modifying current one
         */
         const newNote = Object.assign({}, noteObject)
-        newNote[evt.target.id] = evt.target.value
+        newNote[evt.target.name] = evt.target.value
         console.log(newNote)
         setNote(newNote)
     }
@@ -54,7 +54,6 @@ export default props => {
                 .then(() => props.history.push("/"))
         } else {
             addNote({
-                id: noteObject.id,
                 text: noteObject.text,
                 userId: parseInt(localStorage.getItem("cpr__user"), 10),
                 codeId: currentCodeCardId
@@ -62,8 +61,6 @@ export default props => {
             .then(() => props.history.push("/"))
         }
     }
-
-    console.log(noteObject.codeId)
 
     return (
 
@@ -78,6 +75,7 @@ export default props => {
                     <TextareaAutosize
                         type="text"
                         id="text"
+                        name="text"
                         defaultValue={noteObject.text}
                         required
                         className="form-control"

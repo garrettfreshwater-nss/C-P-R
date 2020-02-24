@@ -60,6 +60,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
             .then(() => props.history.push("/my__code"))
+            debugger
         }
     }
     
@@ -80,7 +81,7 @@ export default props => {
                     type="text"
                     id="name"
                     name="name"
-                    defaultValue={codeObject.name}
+                    value={codeObject.name}
                     required
                     autoFocus
                     className="form-control"
@@ -94,7 +95,7 @@ export default props => {
                 <div className="form-group">
                     <label htmlFor="codeType">Assign to codeType: </label>
                     <select
-                        value={ parseInt(codeObject.codeTypeId) }
+                        value={ codeObject.codeTypeId }
                         name="codeTypeId"
                         // ref={codeTypes}
                         id="codeType"
@@ -118,7 +119,7 @@ export default props => {
                         type="text"
                         id="code"
                         name="codeSnippet"
-                        defaultValue={codeObject.codeSnippet}
+                        value={codeObject.codeSnippet}
                         required
                         className="form-control"
                         placeholder="Paste Code Here"
@@ -136,7 +137,7 @@ export default props => {
                         type="text"
                         id="text"
                         name="text"
-                        defaultValue={codeObject.text}
+                        value={codeObject.text}
                         required
                         className="form-control"
                         placeholder="Your notes"

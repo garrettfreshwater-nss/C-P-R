@@ -23,16 +23,6 @@ export default (props) => {
         return noteArray.push(a)
     })
 
-    const handleControlledInputChange = (evt) => {
-        /*
-            When changing a state object or array, always create a new one
-            and change state instead of modifying current one
-        */
-        const newNote = Object.assign([], noteObject)
-        newNote[evt.target.id] = evt.target.value
-        console.log(newNote)
-        setNote(newNote)
-    }
 
 
     useEffect(() => {
