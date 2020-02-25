@@ -36,7 +36,7 @@ export default ({ code, note, history }) => {
 
     
     const { deleteCode } = useContext(CodeContext)
-    const { notes, addNote} = useContext(NoteContext)
+    const { notes } = useContext(NoteContext)
     
 
   
@@ -51,20 +51,20 @@ export default ({ code, note, history }) => {
     return (
 
     <div className="codeCard_buttons"> 
-        <Button variant="primary" size="sm" className="active__code" onClick={
+        <Button variant="secondary" size="sm" className="active__code" onClick={
               () => {
             history.push(`/code/edit/${code.id}`)
-                }}>Edit
+                }}>edit
         </Button>
     
 
-        <Button variant="danger" size="sm" className="deleteButton" onClick={
+        <Button variant="outline-danger" size="sm" className="deleteButton" onClick={
             () => {
                 deleteCode(code)
                 .then(() => {
                     history.push("/my__code")            
                 })
-            }}>Delete
+            }}>delete
         </Button>
     
     </div>
@@ -112,13 +112,9 @@ export default ({ code, note, history }) => {
                 </div>
 
                 <div className="code__text">{
-                  
                     <Card>
-                    
-                        <Card.Body>{ code.text }</Card.Body>
-                       
+                        <Card.Body>{ code.text }</Card.Body>   
                     </Card>
-
                  } 
 
                  </div>
@@ -128,7 +124,7 @@ export default ({ code, note, history }) => {
                         <Button variant="dark" size="sm" className="addNote" onClick={
                             () => {
                             history.push(`/add__note/${code.id}`)
-                            }}>Comment
+                            }}>comment
                         </Button>
                     
                     {

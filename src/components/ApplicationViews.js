@@ -7,6 +7,8 @@ import { NoteProvider } from "./notes/NoteProvider";
 import NoteForm from "./notes/NoteForm";
 import DashboardCodeList from "./code/DashboardCodeList";
 import UserCodeList from "./code/UserCodeList";
+import { UserProvider } from "./users/UserProvider";
+import { UserProfilePage } from "./users/UserProfilePage";
 
 
 
@@ -15,10 +17,16 @@ import UserCodeList from "./code/UserCodeList";
 export default (props) => {
 return (
         <>
+    {/* <UserProvider> */}
         <NoteProvider>
             <CodeTypeProvider>
                 <CodeProvider>
-               
+                    
+
+                    {/* <Route
+                        exact path="/" 
+                        render={props => <UserProfilePage {...props} />}
+                    /> */}
 
                     <Route
                         exact path="/" 
@@ -49,10 +57,12 @@ return (
                         exact path="/note/edit/:noteId(\d+)" //this is a path created here, renders the form
                         render={props => <NoteForm {...props} />}
                     />
-                   
+
+                  
                 </CodeProvider>
             </CodeTypeProvider>
         </NoteProvider>
+    {/* </UserProvider> */}
 
 
         </>

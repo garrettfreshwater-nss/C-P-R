@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { CodeTypeProvider } from "./codeType/CodeTypeProvider";
 import { CodeProvider } from "./code/CodeProvider";
 import { NoteProvider } from "./notes/NoteProvider";
+// import { UserProvider } from "./users/UserProvider";
+
 
 
 export default (props) => (
@@ -16,26 +18,27 @@ export default (props) => (
     <CodeTypeProvider>
         <CodeProvider>
             <NoteProvider>
+                {/* <UserProvider> */}
 
     
-        <Route render={() => {
-            if (localStorage.getItem("cpr__user")) {
-                return (
-                    
-                    <>
-                        {/* <Route render={props => <UserProfilePage {...props} />} /> */}
-                        <Route render={props => <NavBar {...props} />} />
-                        <Route render={props => <ApplicationViews {...props} />} />
-                    </>
-                )
-            } else {
-                return <Redirect to="/login" />
-            }
-        }} />
+                <Route render={() => {
+                    if (localStorage.getItem("cpr__user")) {
+                        return (
+                            
+                            <>
+                                <Route render={props => <NavBar {...props} />} />
+                                <Route render={props => <ApplicationViews {...props} />} />
+                            </>
+                        )
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
 
-        <Route path="/login" render={props => <Login {...props} />} />
-        <Route path="/register" render={props => <Register {...props} />} />
+                <Route path="/login" render={props => <Login {...props} />} />
+                <Route path="/register" render={props => <Register {...props} />} />
         
+                    {/* </UserProvider> */}
                 </NoteProvider>
             </CodeProvider>
         </CodeTypeProvider>

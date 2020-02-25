@@ -11,7 +11,6 @@ export default (props) => {
     const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({codeTypeId:0})
     const { code } = useContext(CodeContext)
-    const codeSelectRef = useRef(0)
     
    
 
@@ -40,8 +39,6 @@ export default (props) => {
 
     useEffect(() => {
     }, [code])
-    
-console.log(codeObject.codeTypeId, "new object")
     
 
     return (

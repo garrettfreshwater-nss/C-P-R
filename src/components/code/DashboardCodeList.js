@@ -1,6 +1,8 @@
-import React, { useContext, useState, useEffect, useRef } from "react"
+import React, { useContext, useState, useEffect } from "react"
 import { CodeContext } from "./CodeProvider";
 import { CodeTypeContext } from "../codeType/CodeTypeProvider";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Button from 'react-bootstrap/Button';
 import Code from "./Code"
 import "./Code.scss"
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -44,7 +46,6 @@ export default (props) => {
     
 
     const filterCodeType = code.filter(c => c.codeTypeId === parseInt(codeObject.codeTypeId)) || []
-    // const dashboardCodeView = code || []
     // array vs. state
 
 
@@ -52,7 +53,8 @@ export default (props) => {
         <>
         <div className="dashboardCodeView">
 
-            <select
+       
+        <select
                 // value={ parseInt(codeObject.codeTypeId) }
                 name="codeTypeId"
                 id="codeType"
@@ -69,6 +71,8 @@ export default (props) => {
 
                         ))}
             </select>
+        
+
         
             <div className="code__list"> 
 

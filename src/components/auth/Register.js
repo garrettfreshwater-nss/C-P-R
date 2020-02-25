@@ -2,8 +2,7 @@ import React, { useRef } from "react"
 import "./Login.css"
 
 const Register = props => {
-    const firstName = useRef()
-    const lastName = useRef()
+    const name = useRef()
     // const userImage = useRef()
     const email = useRef()
     const password = useRef()
@@ -34,7 +33,7 @@ const Register = props => {
                         body: JSON.stringify({
                             email: email.current.value,
                             password: password.current.value,
-                            name: `${firstName.current.value} ${lastName.current.value}`
+                            name: `${name.current.value}`
                         })
                     })
                         .then(_ => _.json())
@@ -56,7 +55,7 @@ const Register = props => {
                 <h1 className="h3 mb-3 font-weight-normal">Please Register</h1>
                 <fieldset>
                     <label htmlFor="firstName"> First Name </label>
-                    <input ref={firstName} type="text"
+                    <input ref={name} type="text"
                         name="firstName"
                         className="form-control"
                         placeholder="First name"

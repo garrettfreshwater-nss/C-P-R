@@ -43,7 +43,7 @@ const Login = props => {
                         .then(_ => _.json())
                         .then(response => {
                             localStorage.setItem("cpr__user", response.id)
-                            props.history.push("/")
+                            props.history.push("/dashboard")
                         })
                 }
             })
