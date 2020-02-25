@@ -20,19 +20,24 @@
   display:flex;
   flex-direction: row;
   justify-content: flex-start;
+  margin-top: 0px;
 
   .code__name {
-    margin: 15px auto;
+    margin: auto 2px auto 2px;
+    font-weight: 800 !important;
+    font-size: 1.4rem !important; 
   }
 
     .code__codeType {
       max-width: auto;
+      min-width: 75px;
       margin: auto;
-      width: 120px;
-      font-size: 15px;
+      
+      font-size: 14.5px;
+      font-style: oblique;
       text-align: center;
-      background: rgba(126, 214, 228, 0.448);
-      box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.35);
+      background: rgba(167, 255, 95, 0.623);
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.35);
       border-radius: .25rem;
     }
 }
@@ -42,7 +47,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin: 1rem;
+  margin: 0rem auto;
 }
 
 
@@ -68,7 +73,7 @@
     flex-direction: column;
     justify-content: space;
     text-align: center;
-    max-width: 650px;
+    max-width: 700px;
     background: rgba(128, 125, 125, 0.6);
     // border: .01em solid  rgba(187, 185, 185, 0.306);
     // -moz-box-shadow: 0px 0px 1px -20px rgba(0,0,0,1);
@@ -91,7 +96,7 @@
 }
 
 select {
-  max-width: 15%;
+  max-width: 200px;
   margin: auto;
 }
 .code__text {
@@ -99,7 +104,7 @@ select {
   padding: 1em;
   margin: 10px;
   width: auto;
-  background: rgba(244, 245, 247, 0.144);
+  background: rgba(244, 245, 247, 0.096);
   border-radius: .25rem;
 }
 
@@ -204,7 +209,7 @@ html {
   display:flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin: .5rem auto;
+  margin: -10px auto 5px auto;
 }
 
 .topOfPage {
@@ -227,16 +232,26 @@ html {
 }
 
 .deleteButton {
-  margin-left: 10px;
+  margin-left: 6.5px;
 }
 
+
 .user__name {
-  margin: auto 1em auto 0.5em;
+  margin: auto .55em auto -1.0em;
   background: white;
-  padding: .4rem;
-  text-align: center;
+  padding: .2rem .4rem;
+  text-align: right;
+  font-weight: 800;
   font-size: 1.5em;
-  border: .03em solid  rgb(220, 215, 241);
-  box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.52);
+  box-shadow: -6px 5px 7px 2px rgba(0, 0, 0, 0.52);
   border-radius: .25rem;
 }
+
+.badge {
+  font-size: 110% !important;
+  margin: auto 1em auto 0.5em !important;
+  background: rgba(153, 50, 204, 0.692) !important;
+  padding: .4rem;
+  box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.52);
+}
+

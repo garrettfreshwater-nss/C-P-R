@@ -3,6 +3,7 @@ import { NoteContext } from "./NoteProvider";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Accordion from 'react-bootstrap/Accordion';
 import Card from 'react-bootstrap/Card';
+import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 // import { NoteForm } from "../notes/NoteForm";
 
@@ -23,7 +24,7 @@ export default ({ note, history }) => {
             <Button variant="info" size="sm" className="active__note" onClick={
                 () => {
                 history.push(`/note/edit/${note.id}`)
-                }}>Edit
+                }}>edit
             </Button>
         
             <Button variant="outline-danger" size="sm" className="deleteButton" onClick={
@@ -32,7 +33,7 @@ export default ({ note, history }) => {
                     .then(() => {
                         history.push("/")            
                     })
-                }}>Delete
+                }}>delete
             </Button>
         
         </div>
@@ -49,7 +50,10 @@ export default ({ note, history }) => {
                     <Accordion defaultActiveKey="0">
                         <Card>
                             <Card.Header>
-                                { note.user.name }
+                            <Badge variant="secondary">
+                            { note.user.name }
+                            </Badge>
+                                
                             </Card.Header>
                             <Card.Body>{ note.text }</Card.Body> 
                                 {activeUserNote(note)}
