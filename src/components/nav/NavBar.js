@@ -3,10 +3,8 @@ import { Link } from "react-router-dom"
 import "./NavBar.css"
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
-import NavDropdown from 'react-bootstrap/NavDropdown'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { CodeContext, CodeProvider } from "../code/CodeProvider";
-import { CodeTypeContext, CodeTypeProvider } from "../codeType/CodeTypeProvider";
 import Code from "../code/Code";
 import { NoteProvider } from "../notes/NoteProvider";
 
@@ -15,7 +13,6 @@ import { NoteProvider } from "../notes/NoteProvider";
 
 export default (props) => {
 
-    const { codeTypes } = useContext(CodeTypeContext)
     const [ codeObject, setCode ] = useState({})
     const { code } = useContext(CodeContext)
     const dashboardCodeSelectRef = useRef(0)
@@ -59,7 +56,6 @@ export default (props) => {
 
         
 <>
-<CodeTypeProvider>
 <NoteProvider>
 <CodeProvider>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -72,13 +68,7 @@ export default (props) => {
                 <Nav.Link href="/add__code">Add Code</Nav.Link>
                 <Nav.Link href="/my__code">Your Code</Nav.Link>
                 </Nav>
-                
                 <Nav>
-
-
-            
-        
-            
 
                 <Nav.Link eventKey={2} href="#memes">
                     Dank memes
@@ -105,7 +95,6 @@ export default (props) => {
         </Navbar>
         </CodeProvider>
         </NoteProvider>
-        </CodeTypeProvider> 
         </>
 
 

@@ -1,4 +1,6 @@
 import React, { useRef } from "react"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import "./Login.css"
 
@@ -43,7 +45,7 @@ const Login = props => {
                         .then(_ => _.json())
                         .then(response => {
                             localStorage.setItem("cpr__user", response.id)
-                            props.history.push("/dashboard")
+                            props.history.push("/")
                         })
                 }
             })
@@ -53,8 +55,8 @@ const Login = props => {
         <main className="container--login">
             <section className="login__section">
                 <form className="form--login" onSubmit={handleLogin}>
-                    <h1>CPR</h1>
-                    <h2>Welcome Back</h2>
+                <img className="darkLogo" src={require ('./darklogo.svg')}/>
+                    <h2>Welcome Back to CPR</h2>
                     <fieldset>
                         <label htmlFor="inputEmail"> Email address </label>
                         <input ref={email} type="email"
@@ -72,12 +74,14 @@ const Login = props => {
                             required />
                     </fieldset>
                     <fieldset>
-                        <button type="submit">
-                            Sign in
-                    </button>
+                    <Button type="submit" variant="outline-primary">
+                    Sign In
+                </Button>
+                      
                     </fieldset>
                 </form>
             </section>
+            
             <section className="link--register">
                 <Link to="/register">Not a member yet?</Link>
             </section>

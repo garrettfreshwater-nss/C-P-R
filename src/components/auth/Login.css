@@ -1,4 +1,4 @@
-h1 {
+h2 {
     margin-top: 40px;
     font-size: 1.5rem;
     background: transparent;
@@ -9,12 +9,12 @@ h1 {
 .form--login {
     display: inline-block;
     margin: auto;
-    text-align: left;
+    text-align: center;
 }
 
 .form--login > fieldset > input[type="email"],
 .form--login > fieldset > input[type="password"] {
-    width: 20em;
+    width: 28em;
 }
 
 .label--login {
@@ -39,6 +39,7 @@ h1 {
 .link--register a {
     text-decoration: none !important;
     color: black;
+    margin-top: 100px;
     
 }
 .register__section {
@@ -46,7 +47,13 @@ h1 {
    
     width: 600px;
     height: 550px;
-    margin: auto;
+    margin: 2em auto;
 
 } 
+
+.darkLogo {
+    max-width: 250px;
+    text-align:center;
+    margin: auto;
+}
 

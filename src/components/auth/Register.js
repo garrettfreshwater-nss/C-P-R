@@ -1,4 +1,6 @@
 import React, { useRef } from "react"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Button from 'react-bootstrap/Button';
 import "./Login.css"
 
 const Register = props => {
@@ -86,9 +88,9 @@ const Register = props => {
                         required />
                 </fieldset>
                 <fieldset>
-                    <button type="submit">
-                        Sign in
-                    </button>
+                <Button type="submit" variant="outline-primary">
+                    Sign In
+                </Button>
                 </fieldset>
             </form>
         </main>
