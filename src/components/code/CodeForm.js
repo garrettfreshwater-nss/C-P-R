@@ -60,6 +60,7 @@ export default props => {
                 userId: parseInt(localStorage.getItem("cpr__user"), 10)
             })
             .then(() => props.history.push("/my__code"))
+            debugger
         }
     }
     
@@ -96,6 +97,7 @@ export default props => {
                     <select
                         value={ codeObject.codeTypeId }
                         name="codeTypeId"
+                        // ref={codeTypes}
                         id="codeType"
                         className="form-control"
                         onChange={handleControlledInputChange}
