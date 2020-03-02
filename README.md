@@ -1,8 +1,8 @@
-# <img src="src/components/nav/darklogo.svg" height="40px" width="40px"> CPR - Copy Paste Refactor
+# <img src="src/components/nav/darklogo.svg" height="30px" width="30px"> CPR - Copy Paste Refactor
 
 CPR is a React web app with full CRUD functionality that allows users to keep track of code snippets from past projects and view other Users Snippets. Users can comment on other users Code Snippets offering advice or asking for help. Users can edit and delete their code snippets. Also Users can Filter code languages to find a specific snippet. Prism.js was used to display the code documentation formatting.
 
-<img src="./public/dashboard.PNG" height="400px" width="700px"> <img src="./public/userview.PNG" height="400px" width="700px">
+<img src="public/dashboard.png" height="400px" width="700px"> <img src="public/userview.png" height="400px" width="700px">
 
 ## Installation
 
