@@ -6,13 +6,16 @@ CPR is a React web app with full CRUD functionality that allows users to keep tr
 
 ## Installation
 
-Install react packages:
+In your terminal run git clone SSH KEY HERE
 
+cd into the project directory
+
+From the main directory, run npm install to install dependencies
+
+
+In Root Directory run...
 ```bash
-npm create-react-app
-npm i
-
-npm start from the root directory to run application
+npm start
 ```
 
 ---
